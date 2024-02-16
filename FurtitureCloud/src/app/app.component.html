@@ -1,6 +1,12 @@
-<mat-grid-list cols="2" rowHeight="2:1">
-  <mat-grid-tile>1</mat-grid-tile>
-  <mat-grid-tile>2</mat-grid-tile>
-  <mat-grid-tile>3</mat-grid-tile>
-  <mat-grid-tile>4</mat-grid-tile>
+<mat-toolbar color="primary">
+  <span>
+    <a href="google.com">Link 1</a>
+    <a href="google.com">Link 2</a>
+
+
+  </span>
+</mat-toolbar>
+
+<mat-grid-list cols="3" rowHeight="1:1">
+  <mat-grid-tile *ngFor="let item of items">{{item}}</mat-grid-tile>
 </mat-grid-list>
