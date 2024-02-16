@@ -1,4 +1,21 @@
 a {
     color: white;
     margin: 1em;
+    text-decoration: none;
+}
+
+.navbar-span {
+    margin: auto;
+    padding: auto;
+}
+
+nav {
+    background-color: blueviolet;
+    padding: 1em;
+    align-items: center;
+    display: flex;
+}
+
+.logo {
+    color: white; 
 }
