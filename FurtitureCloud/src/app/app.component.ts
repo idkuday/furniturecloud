@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductService } from './product.service';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,10 @@ import { ProductService } from './product.service';
 export class AppComponent {
   items: any[];
   constructor(private productService: ProductService) {
-    this.items = productService.getAllProducts();
+   
+    productService.getAllProducts();
+    this.items = productService.products;
+    
   }
 
   title = 'FurtitureCloud';

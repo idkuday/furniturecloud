@@ -6,6 +6,20 @@
   </div>
 </nav>
 
-<mat-grid-list cols="3" rowHeight="1:1">
+<table border="1" style="margin-left: 25vw;">
+  <tr>
+    <th>SKU</th>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Stock</th>
+  </tr>
+  <tr *ngFor="let item of items">
+    <td>{{item.sku}}</td>
+    <td>{{item.name}}</td>
+    <td>{{item.category}}</td>
+    <td>{{item.stock}}</td>
+  </tr>
+</table>
+<!-- <mat-grid-list cols="3" rowHeight="1:1">
   <mat-grid-tile *ngFor="let item of items">{{ item }}</mat-grid-tile>
-</mat-grid-list>
+</mat-grid-list> -->
