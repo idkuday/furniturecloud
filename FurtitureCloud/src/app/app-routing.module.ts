@@ -5,14 +5,12 @@ import { LightingComponent } from './lighting/lighting.component';
 import { BedroomComponent } from './bedroom/bedroom.component';
 
 const routes: Routes = [
-  {path: 'categories', component: CategoriesComponent, children: [
-    {path: 'lighting', component: LightingComponent},
-    {path: 'bedroom', component: BedroomComponent}
-  ]}
+  { path: 'lighting', component: LightingComponent },
+  { path: 'bedroom', component: BedroomComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

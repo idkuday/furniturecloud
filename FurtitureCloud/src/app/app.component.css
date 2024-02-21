@@ -19,3 +19,7 @@ nav {
 .logo {
     color: white; 
 }
+
+.category-picture :hover {
+    opacity: 0.5;
+}

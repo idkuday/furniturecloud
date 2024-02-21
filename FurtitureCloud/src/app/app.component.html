@@ -1,12 +1,13 @@
 <nav col>
   <div class="logo">chandra.exe</div>
   <div class="navbar-span">
-    <a routerLink="./categories">Categories</a>
-    <a routerLink="./categories/bedroom">Bedroom</a>
-    <a routerLink="./categories/lighting">Lighting</a>
+    <a routerLink="./bedroom">Bedroom</a>
+    <a routerLink="./lighting">Lighting</a>
   </div>
 </nav>
 
+
+<!-- 
 <table border="1" style="margin-left: 25vw;">
   <tr>
     <th>SKU</th>
@@ -20,8 +21,13 @@
     <td>{{item.category}}</td>
     <td>{{item.stock}}</td>
   </tr>
-</table>
-<!-- <mat-grid-list cols="3" rowHeight="1:1">
-  <mat-grid-tile *ngFor="let item of items">{{ item }}</mat-grid-tile>
-</mat-grid-list> -->
+</table> -->
+
+<mat-grid-list cols="3" rowHeight="1:1">
+  <mat-grid-tile *ngFor="let item of items">
+    <img src="" class="category-picture">
+    <a routerLink="./bedroom">Bedroom</a>
+  </mat-grid-tile>
+</mat-grid-list>
+
 <router-outlet></router-outlet>
