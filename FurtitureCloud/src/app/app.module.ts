@@ -8,10 +8,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
+import { LampsComponent } from './lamps/lamps.component';
+import { LightingComponent } from './lighting/lighting.component';
+import { BedroomComponent } from './bedroom/bedroom.component';
+import { CategoriesComponent } from './categories/categories.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LampsComponent,
+    LightingComponent,
+    BedroomComponent,
+    CategoriesComponent
   ],
   imports: [
     BrowserModule,

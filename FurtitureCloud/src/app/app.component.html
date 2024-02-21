@@ -1,8 +1,9 @@
 <nav col>
   <div class="logo">chandra.exe</div>
   <div class="navbar-span">
-    <a href="google.com">Link 1</a>
-    <a href="google.com">Link 2</a>
+    <a routerLink="./categories">Categories</a>
+    <a routerLink="./categories/bedroom">Bedroom</a>
+    <a routerLink="./categories/lighting">Lighting</a>
   </div>
 </nav>
 
@@ -23,3 +24,4 @@
 <!-- <mat-grid-list cols="3" rowHeight="1:1">
   <mat-grid-tile *ngFor="let item of items">{{ item }}</mat-grid-tile>
 </mat-grid-list> -->
+<router-outlet></router-outlet>
