@@ -23,3 +23,9 @@ nav {
 .category-picture :hover {
     opacity: 0.5;
 }
+.category-picture :hover {
+    z-index: 8;
+}
+.text{
+    opacity: 1;
+}
