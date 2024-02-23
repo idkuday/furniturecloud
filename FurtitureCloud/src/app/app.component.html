@@ -30,6 +30,8 @@
 <mat-grid-list cols="3" rowHeight="1:1">
   <mat-grid-tile *ngFor="let category of categories">    
     <a routerLink="{{routerPath(category[0])}}" class="category-picture text">{{category[0]}}<img src="{{category[1]}}" ></a>
+  <mat-grid-tile *ngFor="let category of categories">    
+    <a routerLink="{{routerPath(category[0])}}" class="category-picture text">{{category[0]}}<img src="{{category[1]}}" ></a>
   </mat-grid-tile>
 </mat-grid-list>
 <router-outlet></router-outlet> -->
