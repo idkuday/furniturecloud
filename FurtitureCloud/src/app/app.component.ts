@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 // import { ProductService } from './product.service';
 // import { provideHttpClient, withFetch } from '@angular/common/http';
 // import { UserService } from './user.service';
+// import { ProductService } from './product.service';
+// import { provideHttpClient, withFetch } from '@angular/common/http';
+// import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
