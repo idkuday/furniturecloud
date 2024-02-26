@@ -18,6 +18,8 @@ import { BedroomComponent } from './bedroom/bedroom.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { HomeComponent } from './home/home.component';
 import { MaterialModule } from './material/material.module';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { MaterialModule } from './material/material.module';
     BedroomComponent,
     CategoriesComponent,
     HomeComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, MaterialModule],
   providers: [provideClientHydration(), provideAnimationsAsync()],

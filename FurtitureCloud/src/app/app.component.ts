@@ -9,11 +9,6 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  addToCart() {
-    this.cartLength++;
-  }
-  placeholder: string = 'Search';
-  cartLength: number = 0;
   // items: any[];
 
   // categories: any[] = [["LivingRoom", "../assets/LivingRoom.jpg"], ["Lighting", "../assets/Lighting.jpg"],

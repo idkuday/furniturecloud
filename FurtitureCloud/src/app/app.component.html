@@ -34,48 +34,10 @@
     <a routerLink="{{routerPath(category[0])}}" class="category-picture text">{{category[0]}}<img src="{{category[1]}}" ></a>
   </mat-grid-tile>
 </mat-grid-list>--- -->
+<div id="rootdiv">
+  <app-header></app-header>
 
-<div id="Header">
-  <mat-toolbar id="nav_1">
-    <ul id="nav_list_1">
-      <li class="nav_item_1">
-        <a href="" class="nav_anchor_1">SELL ON FURNITURE CLOUD</a>
-      </li>
-      <li class="nav_item_1">
-        <a href="" class="nav_anchor_1">BUY IN BULK</a>
-      </li>
-      <li class="nav_item_1">
-        <a href="" class="nav_anchor_1">TRACK YOUR ORDER</a>
-      </li>
-      <li class="nav_item_1"><a href="" class="nav_anchor_1">CONTACT US</a></li>
-    </ul>
-  </mat-toolbar>
+  <router-outlet></router-outlet>
 
-  <section class="main">
-    <form action="" id="search">
-      <input type="text" [placeholder]="placeholder" />
-      <button mat-button>
-        <img src="../assets/search.svg" alt="" />
-      </button>
-    </form>
-
-    <div class="title">Furniture Cloud</div>
-    <div class="icons">
-      <div id="login">Login <img src="../assets/login.svg" alt="" /></div>
-      <div id="wishlist">
-        Wishlist <img src="../assets/wishlist.svg" alt="" />
-      </div>
-      <div
-        [matBadge]="cartLength"
-        matBadgeOverlap="false"
-        id="cart"
-        (click)="addToCart()"
-      >
-        Cart <img src="../assets/cart.svg" alt="" />
-      </div>
-    </div>
-  </section>
+  <app-footer></app-footer>
 </div>
-
-<router-outlet></router-outlet>
-<div id="Footer"></div>

@@ -1,0 +1,43 @@
+<div id="Header">
+  <mat-toolbar id="nav_1">
+    <ul id="nav_list_1">
+      <li class="nav_item_1">
+        <a href="" class="nav_anchor_1">SELL ON FURNITURE CLOUD</a>
+      </li>
+      <li class="nav_item_1">
+        <a href="" class="nav_anchor_1">BUY IN BULK</a>
+      </li>
+      <li class="nav_item_1">
+        <a href="" class="nav_anchor_1">TRACK YOUR ORDER</a>
+      </li>
+      <li class="nav_item_1"><a href="" class="nav_anchor_1">CONTACT US</a></li>
+    </ul>
+  </mat-toolbar>
+
+  <section class="main">
+    <div id="searchdiv">
+      <form action="" id="search">
+        <input type="text" [placeholder]="placeholder" />
+        <button mat-button>
+          <img src="../assets/search.svg" alt="" />
+        </button>
+      </form>
+    </div>
+
+    <div class="title">Furniture Cloud</div>
+    <div class="icons">
+      <div id="login">Login <img src="../assets/login.svg" alt="" /></div>
+      <div id="wishlist">
+        Wishlist <img src="../assets/wishlist.svg" alt="" />
+      </div>
+      <div
+        [matBadge]="cartLength"
+        matBadgeOverlap="false"
+        id="cart"
+        (click)="addToCart()"
+      >
+        Cart <img src="../assets/cart.svg" alt="" />
+      </div>
+    </div>
+  </section>
+</div>
