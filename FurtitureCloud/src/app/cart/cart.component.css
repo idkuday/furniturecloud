@@ -1,0 +1,39 @@
+.column {
+    float: left;
+    width: 50%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .quantity-area {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .product-card {
+    margin: 1em;
+    padding: 5px;
+    border-width: 1px;
+    border: solid;
+    border-color: grey;
+    border-radius: 25px;
+  }
+
+  .trash-button {
+    margin: 10px;
+    padding: 5px;
+  }
+
+  .quantity-select {
+    margin-top: 5px;
+    padding: 5px;
+  }
+
+  h2 {
+    text-align: center;
+  }
