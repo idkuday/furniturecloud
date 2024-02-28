@@ -1,0 +1,122 @@
+#Header{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: stretch;
+    justify-content: space-between;
+}
+.nav_anchor_1 {
+    text-decoration: none;
+    color: rgb(108, 106, 106);
+}
+
+.nav_item_1 :hover {
+    color: orange;
+}
+
+.nav_item_1 {
+    padding-right: 2rem;
+
+}
+
+#nav_1 {
+    background-color: aliceblue;
+    justify-content: space-around;
+    align-items: stretch;
+    font-size: smaller;
+    display: flex;
+    height: 2.5rem
+}
+
+#nav_list_1 {
+    padding-right: 1rem;
+    /* margin-left: 20rem;
+    margin-right:20rem; */
+    list-style-type: none;
+    display: flex;
+    align-items: stretch;
+}
+
+#searchdiv {
+    width: 400px
+}
+
+.main {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+    flex-wrap: nowrap;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+#search {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    width: 150px;
+    max-width: 450px;
+    background-color: transparent;
+    border-width: 2px;
+    border: solid;
+    border-radius: 20px;
+    /* overflow: hidden; */
+    padding: 10px 10px;
+    transition: 1s;
+}
+
+.title {
+    position: relative;
+    background-image: linear-gradient(45deg, brown, red, violet, skyblue, rgb(60, 167, 167));
+    background-clip: text;
+    color: transparent;
+    font-size: 40px;
+    font-family: cursive;
+    font-weight: bolder;
+}
+
+.icons {
+    position: relative;
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#search input {
+    border: 0;
+    width: 99%;
+    outline: none;
+    font-size: 20px;
+    background-color: transparent;
+    /* border-radius: 10px ; */
+}
+
+#search button {
+
+    border-radius: 50%;
+    border: 0;
+}
+
+/* #search button:hover{
+    background-color: beige;
+} */
+#search:focus-within {
+    width: 350px;
+}
+
+#login {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#cart, #wishlist {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+}
