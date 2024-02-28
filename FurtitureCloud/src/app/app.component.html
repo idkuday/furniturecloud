@@ -73,12 +73,7 @@
       <div id="wishlist">
         Wishlist <img src="../assets/wishlist.svg" alt="" />
       </div>
-      <div
-        [matBadge]="cartLength"
-        matBadgeOverlap="false"
-        id="cart"
-        (click)="addToCart()"
-      >
+      <div [matBadge]="cartLength" matBadgeOverlap="false" id="cart" (click)="addToCart()">
         Cart <img src="../assets/cart.svg" alt="" />
       </div>
     </div>

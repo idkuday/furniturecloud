@@ -7,7 +7,7 @@
     justify-content: space-between;
     margin-top: 100px;
 }
-.row{
+.row1{
     display: flex;
     justify-content: space-around ;
     flex-direction: row;
@@ -16,6 +16,21 @@
     justify-content: space-around;
     margin-left: 20px;
     margin-right: 20px;
+}
+.row2 {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: stretch;
+    margin-top: 50px;
+
+   
+}
+.row2 a{
+    margin-right: 20px;
+    text-decoration: none;
+    color: #6e6e6e;
 }
 .col1{
     position: relative;

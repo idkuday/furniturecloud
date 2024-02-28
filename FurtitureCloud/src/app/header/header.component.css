@@ -1,10 +1,12 @@
 #Header{
     position: relative;
+    align-items: center;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-content: stretch;
     justify-content: space-between;
+    width:100%
 }
 .nav_anchor_1 {
     text-decoration: none;
@@ -43,14 +45,19 @@
 }
 
 .main {
+
     display: flex;
-    width: 100%;
+    width: 95%;
     justify-content: space-around;
     align-items: center;
     margin-top: 10px;
     flex-wrap: nowrap;
     margin-right: 0px;
-    margin-left: 0px;
+    margin-left: 10px;
+    padding-bottom: 20px;
+    border-bottom: solid;
+    border-color: grey;
+    border-width: 2px;
 }
 
 #search {
@@ -83,6 +90,7 @@
     width: 300px;
     display: flex;
     justify-content: space-around;
+    
 }
 
 #search input {
@@ -100,6 +108,12 @@
     border: 0;
 }
 
+#search button:hover{
+    transform: scale(1.2);
+
+}
+
+
 /* #search button:hover{
     background-color: beige;
 } */
@@ -112,11 +126,27 @@
     align-items: center;
     font-weight: bold;
     cursor: pointer;
+    transition: 0.2s;
 }
 
 #cart, #wishlist {
+    position: relative;
     display: flex;
     align-items: center;
     font-weight: bold;
     cursor: pointer;
+    transition: 0.2s;
+}
+#cat{
+    width:100%;
+    position: -webkit-sticky;
+    position: sticky;
+   
+        /* Safari */
+    top:0;
+}
+
+.icons :hover {
+    transform: scale(1.2);
+
 }
