@@ -4,6 +4,11 @@ import {
   provideClientHydration,
 } from '@angular/platform-browser';
 
+import {
+  BrowserModule,
+  provideClientHydration,
+} from '@angular/platform-browser';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -21,6 +26,8 @@ import { HomeComponent } from './home/home.component';
 import { MaterialModule } from './material/material.module';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { MaterialModule } from './material/material.module';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +37,7 @@ import { FooterComponent } from './footer/footer.component';
     BedroomComponent,
     CategoriesComponent,
     HomeComponent,
-    CategoriesComponent,
-    HomeComponent,
+    CartComponent,
     HeaderComponent,
     FooterComponent,
   ],
@@ -39,6 +45,7 @@ import { FooterComponent } from './footer/footer.component';
   providers: [provideClientHydration(), provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })
+
 
 export class AppModule {
   constructor() {
