@@ -1,1 +1,13 @@
-<section id="Body Home"></section>
+<section id="Home">
+  <a href=""><img class="offer" src="../../assets/Offer1.webp" alt="" /></a>
+  <mat-grid-list cols="3" rowHeight="200px">
+    @for (tile of tiles; track tile) {
+    <mat-grid-tile
+      [colspan]="tile.cols"
+      [rowspan]="tile.rows"
+      [style.background]="tile.color"
+    >
+    </mat-grid-tile>
+    }
+  </mat-grid-list>
+</section>
