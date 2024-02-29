@@ -9,11 +9,11 @@ export class CartComponent {
   items = [
     {
       id: 1,
-      name: 'Sofa',
-      price: 10.0,
-      category: 'room',
+      name: 'Silver Stainless Steel (Set of 2) Airtight Cookies Canister With Lid',
+      price: 16344,
+      category: 'Kitchen Stuff',
       stock: 12,
-      description: 'aaa'
+      description: 'Get your kitchen a very well-established look and ensure a better way of living. You can now give an unforgettable experience to your guests when you serve them Indian food in URBAN SPOON products. '
     },
     {
       id: 2,

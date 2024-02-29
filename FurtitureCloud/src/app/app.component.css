@@ -5,3 +5,7 @@
     align-content: stretch;
     justify-content: space-between;
 }
+
+#page-area {
+    z-index: 0;
+}
