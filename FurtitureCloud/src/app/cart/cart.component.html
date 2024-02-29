@@ -16,8 +16,8 @@
         </mat-card-title-group>
       </mat-card-header>
       <mat-card-content>
-        {{ item.description }}
-        ${{ item.price }}
+       <div style="font-size: larger; font-weight: bolder; ">${{ item.price }}</div>  <br> 
+        <div style="font-size: smaller;">{{ item.description }} </div>
       </mat-card-content>
 
       <div class="quantity-area">
@@ -39,15 +39,15 @@
     </mat-card>
     }
   </div>
-  <div class="column">
+  <div class="column order-div">
     <h2> Order Details </h2>
-    <form class="example-form">
+    <!-- <form class="example-form">
       <mat-form-field class="example-full-width">
         <mat-label>Zip Code</mat-label>
         <input matInput placeholder="Ex. Pizza" value="Sushi">
       </mat-form-field>
 
-      </form>
+      </form> -->
     <button mat-button color="primary">Apply Coupon</button>
     <p>Your discount is 10%</p>
 
@@ -65,8 +65,8 @@
           <div class="column"> You Saved </div>
           <div class="column"> 14,920 </div>
         </div>
-        <button mat-button color="primary">Apply Coupon</button>
       </mat-card-content>
     </mat-card>
+    <button mat-button color="primary">BYE NOW!!!! 99% of - jst entr ur email</button>
   </div>
 </div>

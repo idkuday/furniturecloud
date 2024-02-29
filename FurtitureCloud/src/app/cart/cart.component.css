@@ -37,3 +37,7 @@
   h2 {
     text-align: center;
   }
+
+  *, form, mat-form-field, mat-label, input {
+    z-index: 0;
+  }

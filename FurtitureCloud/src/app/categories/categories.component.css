@@ -1,3 +1,6 @@
+* {
+    z-index: 5;
+}
 
 #categories{
     display: flex;
@@ -9,7 +12,7 @@
     align-items: stretch;
     background-color: transparent;
     position: relative;
-
+    overflow: unset;
     background-color: rgb(239, 239, 226);
 }
 #categories ul{
