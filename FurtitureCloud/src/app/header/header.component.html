@@ -24,13 +24,13 @@
       </form>
     </div>
 
-    <div class="title">Furniture Cloud</div>
+    <div routerLink="./" class="title">| Furniture Cloud |</div>
     <div class="icons">
       <div id="login">Login <img src="../assets/login.svg" alt="" /></div>
       <div id="wishlist">
         Wishlist <img src="../assets/wishlist.svg" alt="" />
       </div>
-      <div [matBadge]="cartLength" matBadgeOverlap="false" id="cart" (click)="addToCart()">
+      <div routerLink="./cart" [matBadge]="cartLength" matBadgeOverlap="false" id="cart" (click)="addToCart()">
         Cart <img src="../assets/cart.svg" alt="" />
       </div>
     </div>
