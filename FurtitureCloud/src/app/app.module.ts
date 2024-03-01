@@ -22,6 +22,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MaterialModule } from './material/material.module';
 import { CartComponent } from './cart/cart.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CartComponent } from './cart/cart.component';
     CartComponent,
     HeaderComponent,
     FooterComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    AdminComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, MaterialModule],
   providers: [provideClientHydration(), provideAnimationsAsync()],
