@@ -12,6 +12,13 @@ import { LampsComponent } from './lamps/lamps.component';
 import { LightingComponent } from './lighting/lighting.component';
 import { BedroomComponent } from './bedroom/bedroom.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { MaterialModule } from './material/material.module';
+import { CartComponent } from './cart/cart.component';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,21 +26,16 @@ import { CategoriesComponent } from './categories/categories.component';
     LampsComponent,
     LightingComponent,
     BedroomComponent,
-    CategoriesComponent
+    HomeComponent,
+    CartComponent,
+    HeaderComponent,
+    FooterComponent,
+    CategoriesComponent,
+    LoginFormComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatGridListModule,
-    MatToolbarModule,
-    HttpClientModule
-  ],
-  providers: [
-    provideClientHydration(),
-    provideAnimationsAsync(),
-     
-  ],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, MaterialModule, FormsModule],
+  providers: [provideClientHydration(), provideAnimationsAsync()],
+  bootstrap: [AppComponent],
 })
 export class AppModule { 
   constructor() {
