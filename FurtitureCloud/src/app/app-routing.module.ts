@@ -8,15 +8,23 @@ import { CartComponent } from './cart/cart.component';
 import { AdminComponent } from './admin/admin.component';
 import { RegFormComponent } from './reg-form/reg-form.component';
 import { LoginComponent } from './login/login.component';
+import { ProductTableComponent } from './product-table/product-table.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'admin', component: AdminComponent},
+  {
+    path: 'admin',
+    children: [
+      { path: '', component: AdminComponent },
+      { path: 'products', component: ProductTableComponent },
+      { path: 'users', component: UserTableComponent },
+    ],
+  },
   { path: 'lighting', component: LightingComponent },
   { path: 'bedroom', component: BedroomComponent },
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegFormComponent }
+  { path: 'register', component: RegFormComponent },
 ];
 
 @NgModule({

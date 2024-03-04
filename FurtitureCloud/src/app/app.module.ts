@@ -31,6 +31,7 @@ import { AdminComponent } from './admin/admin.component';
 import { FormsModule } from '@angular/forms';
 import { RegFormComponent } from './reg-form/reg-form.component';
 import { LoginComponent } from './login/login.component';
+import { ProductTableComponent } from './product-table/product-table.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { LoginComponent } from './login/login.component';
     OfferBanner2Component,
     RegFormComponent,
     LoginComponent,
+    ProductTableComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, MaterialModule, FormsModule],
   providers: [
