@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 import {
+  HTTP_INTERCEPTORS,
   HttpClientModule,
   provideHttpClient,
   withFetch,
@@ -22,6 +23,10 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MaterialModule } from './material/material.module';
 import { CartComponent } from './cart/cart.component';
+import { Offer1Component } from './offer1/offer1.component';
+import { OfferBanner1Component } from './offer-banner1/offer-banner1.component';
+import { OfferBanner2Component } from './offer-banner2/offer-banner2.component';
+import { JwtInterceptorService } from './jwt-interceptor.service';
 import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
@@ -36,16 +41,23 @@ import { AdminComponent } from './admin/admin.component';
     FooterComponent,
     CategoriesComponent,
     AdminComponent,
+    Offer1Component,
+    OfferBanner1Component,
+    OfferBanner2Component,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, MaterialModule],
-  providers: [provideClientHydration(), provideAnimationsAsync()],
+  providers: [
+    provideClientHydration(),
+    provideAnimationsAsync(),
+    provideHttpClient(withFetch()),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
-
-
 export class AppModule {
-  constructor() {
-    provideHttpClient(withFetch());
-    provideHttpClient(withFetch());
-  }
+  constructor() {}
 }

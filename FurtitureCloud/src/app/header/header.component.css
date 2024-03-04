@@ -7,6 +7,7 @@
     align-content: stretch;
     justify-content: space-between;
     width:100%;
+
     
 }
 *{
@@ -62,6 +63,7 @@
     border-bottom: solid;
     border-color: grey;
     border-width: 2px;
+    overflow: visible;
 }
 
 #search {
@@ -89,16 +91,17 @@
     font-weight: 400;
     font-style: normal;
     font-weight: bolder;
-    overflow: visible;
+
     width:fit-content;
     cursor: pointer;
 }
 
 .icons {
-    position: relative;
+    position: relative;     
     width: 300px;
     display: flex;
     justify-content: space-around;
+    overflow: visible;
     
 }
 
@@ -156,7 +159,7 @@
     top:0;
 }
 
-.icons :hover {
+.icons div:hover {
     transform: scale(1.2);
 
 }
