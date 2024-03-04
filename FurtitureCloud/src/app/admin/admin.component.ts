@@ -7,19 +7,22 @@ export interface PeriodicElement {
   position: number;
   weight: number;
   symbol: string;
+  price: number;
 }
 
+
+
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  {position: 1, name: 'Sofa', weight: 1, symbol: 'H', price: 1},
+  {position: 2, name: 'Sofa2', weight: 4, symbol: 'He', price: 2},
+  {position: 3, name: 'Sofa3', weight: 6, symbol: 'Li', price: 3},
+  {position: 4, name: 'Sofa4', weight: 9, symbol: 'Be', price: 4},
+  {position: 5, name: 'Sofa5', weight: 10, symbol: 'B', price: 5},
+  {position: 6, name: 'Sofa6', weight: 12, symbol: 'C', price: 6},
+  {position: 7, name: 'Lamp1', weight: 14, symbol: 'N', price: 7},
+  {position: 8, name: 'Lamp2', weight: 15, symbol: 'O', price: 8},
+  {position: 9, name: 'Lamp3', weight: 18, symbol: 'F', price: 9},
+  {position: 10, name: 'Lamp4', weight: 20, symbol: 'Ne', price: 10},
 ];
 
 @Component({
@@ -28,7 +31,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrl: './admin.component.css',
 })
 export class AdminComponent {
-  displayedColumns: string[] = ['select', 'position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['select', 'position', 'name', 'stock', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   dataSource1 = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   selection = new SelectionModel<PeriodicElement>(true, []);
