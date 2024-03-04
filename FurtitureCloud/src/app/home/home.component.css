@@ -1,8 +1,35 @@
 #Home{
-    /* display : flex; */
+    display : flex;
+    flex-direction: column;
     margin:20px;
+    align-items: stretch;
+}
+#Home *{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+}
+img{
+    z-index: 0;
 }
 .offer{
-    width:100%;
-    height:auto;
+    z-index: 0;
+    width:80%;
+    height:20%;
 }
+* {
+    z-index: 0;
+}
+/* #offers{
+    width:90%;
+    margin-top:50px;
+    padding:4px;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items:center ;
+    justify-content: center;
+} */

@@ -3,7 +3,6 @@
     display: flex;
     font-size: 15px;
     width:100%;
-    margin-top: 1rem;
     padding :5px;
     padding-bottom: 0.2rem;
     align-items: stretch;
@@ -31,7 +30,6 @@
     transition: 0.7s;
 }
 .cat a{
-    
     text-decoration: none;
     color: rgb(58, 57, 57);
     font-weight: bold;
@@ -39,14 +37,14 @@
 }
 
 .cat:hover{
-    
     border-color: rgb(86, 253, 197);
     border-top: none;
     border-width: 5px;
     transform:  translateY(-10px);
     padding-bottom: 40px;
-    
-    
-
+}
+.cat{
+    float: left;
+    z-index: 20;
 }
 
