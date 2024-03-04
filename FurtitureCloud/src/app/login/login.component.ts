@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-login-form',
-  templateUrl: './login-form.component.html',
-  styleUrl: './login-form.component.css'
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.css'
 })
-export class LoginFormComponent {
+export class LoginComponent {
   @Output() onSubmitLoginEvent = new EventEmitter();
   login: string = "";
   password: string = "";

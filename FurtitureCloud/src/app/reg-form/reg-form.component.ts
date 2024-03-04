@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  selector: 'app-reg-form',
+  templateUrl: './reg-form.component.html',
+  styleUrl: './reg-form.component.css'
 })
-export class RegisterComponent {
-@Output() onSubmitLoginEvent = new EventEmitter();
+export class RegFormComponent {
+  @Output() onSubmitLoginEvent = new EventEmitter();
 register: any;
 password: any;
 firstname: any;
@@ -15,4 +15,5 @@ address: any;
   onSubmitRegister() {
   throw new Error('Method not implemented.');
   }
+
 }

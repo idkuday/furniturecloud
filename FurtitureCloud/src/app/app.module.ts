@@ -28,6 +28,9 @@ import { OfferBanner1Component } from './offer-banner1/offer-banner1.component';
 import { OfferBanner2Component } from './offer-banner2/offer-banner2.component';
 import { JwtInterceptorService } from './jwt-interceptor.service';
 import { AdminComponent } from './admin/admin.component';
+import { FormsModule } from '@angular/forms';
+import { RegFormComponent } from './reg-form/reg-form.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -44,8 +47,10 @@ import { AdminComponent } from './admin/admin.component';
     Offer1Component,
     OfferBanner1Component,
     OfferBanner2Component,
+    RegFormComponent,
+    LoginComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, MaterialModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, MaterialModule, FormsModule],
   providers: [
     provideClientHydration(),
     provideAnimationsAsync(),
