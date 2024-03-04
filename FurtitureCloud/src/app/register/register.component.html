@@ -1,0 +1,36 @@
+<div class="row">
+    <div>
+        <form (ngSubmit)="onSubmitRegister()" #registerForm="ngForm">
+            <div class="col-4">
+                <label class="form-label" for="registerName">Username</label>
+                <input class="form-control" type="text" id="registerName" name="register" [(ngModel)]="register" />
+                                
+            </div>
+            <div class="col-4">
+                <label class="form-label" for="registerPassword">Password</label>
+                <input class="form-control" type="password" id="registerPassword" name="register" [(ngModel)]="password" />
+                
+            </div>
+
+            <div class="col-4">
+                <label class="form-label" for="registerFirstName">First Name</label>
+                <input class="form-control" type="text" id="registerFirstName" name="register" [(ngModel)]="firstname" />
+                
+            </div>
+
+            <div class="col-4">
+                <label class="form-label" for="registerLastName">Last Name</label>
+                <input class="form-control" type="text" id="registerLastName" name="register" [(ngModel)]="lastname" />
+                
+            </div>
+
+            <div class="col-4">
+                <label class="form-label" for="registerAddress">Address</label>
+                <input class="form-control" type="text" id="registerAddress" name="register" [(ngModel)]="address" />
+                
+            </div>
+
+            <button color="primary" type="submit" class="" mat-raised-button >Sign Up</button>
+        </form>
+    </div>
+</div>
