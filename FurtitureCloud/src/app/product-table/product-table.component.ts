@@ -2,12 +2,6 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
-@Component({
-  selector: 'app-product-table',
-  templateUrl: './product-table.component.html',
-  styleUrl: './product-table.component.css'
-})
-
 export interface Product {
   name: string;
   sku: number;
@@ -16,7 +10,6 @@ export interface Product {
   category: string;
   price: number;
 }
-
 
 
 const ELEMENT_DATA: Product[] = [
@@ -32,6 +25,9 @@ const ELEMENT_DATA: Product[] = [
   {sku: 10, name: 'Lamp4', descr: 'aaa',stock: 20, category: 'Lighting', price: 10},
 ];
 
+
+
+@Component({ selector: 'app-product-table', templateUrl: './product-table.component.html', styleUrl: './product-table.component.css' })
 export class ProductTableComponent {
   displayedColumns: string[] = ['select', 'sku', 'name', 'descr', 'stock', 'category', 'price'];
   dataSource = new MatTableDataSource<Product>(ELEMENT_DATA);
