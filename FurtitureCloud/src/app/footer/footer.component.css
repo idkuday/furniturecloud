@@ -45,9 +45,13 @@
     color: #6e6e6e;
     margin-top:10px;
     margin-bottom: 10px;
+    width: fit-content;
 }
 .col1 p {
     font-weight: bold;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+.col1 a:hover{
+    text-decoration: underline;
 }

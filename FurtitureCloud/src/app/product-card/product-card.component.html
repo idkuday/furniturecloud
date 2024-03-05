@@ -1,0 +1,45 @@
+<mat-card class="product-card">
+  <mat-card-header style="flex-direction: column">
+    <mat-card-title-group>
+      <mat-card-title>{{ item.name }}</mat-card-title>
+      <mat-card-subtitle>{{ item.category }}</mat-card-subtitle>
+
+      <img mat-card-sm-image src="{{ imgUrl }}" />
+    </mat-card-title-group>
+  </mat-card-header>
+  <mat-card-content>
+    <div style="font-size: larger; font-weight: bolder">${{ item.price }}</div>
+    <br />
+    <div style="font-size: smaller">{{ item.description }}</div>
+  </mat-card-content>
+
+  <div class="quantity-area">
+    <mat-form-field class="quantity-select">
+      <mat-label>Quantity</mat-label>
+      <select matNativeControl required>
+        @for (i of giveRange(item.stock); track i) {
+        <option value="{{ i }}">{{ i }}</option>
+        }
+      </select>
+    </mat-form-field>
+    @if (isCart) {
+    <button
+      class="trash-button"
+      mat-fab
+      color="warn"
+      aria-label="delete icon button"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+    } @else {
+    <button
+      class="trash-button"
+      mat-fab
+      color="primary"
+      aria-label="plus icon button"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+    }
+  </div>
+</mat-card>

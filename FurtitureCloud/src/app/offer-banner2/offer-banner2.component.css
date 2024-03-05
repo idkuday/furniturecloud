@@ -1,0 +1,22 @@
+.offer {
+
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    /* border: solid; */
+    cursor: pointer;
+    transition: 0.5s;
+    width: 90%;
+
+}
+
+.offer img {
+    width: 100%;
+}
+
+.offer :hover {
+    opacity: 0.9;
+
+}

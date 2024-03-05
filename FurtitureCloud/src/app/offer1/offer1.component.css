@@ -1,0 +1,58 @@
+
+.offer{
+    width: 100%;
+    margin-top: 30px;
+    
+    align-items: center;    /* border: solid; */
+    cursor:pointer;
+    transition: 0.5s;
+}
+mat-card:hover{
+   
+    
+        transform: translateY(-10px);
+    
+    
+}
+.offer div{
+    width:100%;
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap   ;
+    align-items: stretch;
+}
+.offer-card{
+    padding :0px;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    margin: 0;  
+    /* border: solid;
+    border-width: 5px;
+    border-color: black; */
+ 
+    background-color: transparent;
+    max-width:33%;
+    height: max-content;
+    border:none;
+    transition: 0.5s;
+
+
+}
+.offer-card img{
+    width : 100%;
+    
+
+}
+.Card-Content{
+
+    text-align: center;
+    font-size: large;
+    font-weight: 600;
+    background-color: transparent;
+    border:none;
+    height:1rem
+}   
+*{
+    z-index: 0;
+}

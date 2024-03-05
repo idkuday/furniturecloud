@@ -12,7 +12,9 @@ import { FormsModule } from '@angular/forms';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-
+import { MatTabsModule } from '@angular/material/tabs';
+import {MatTableModule} from '@angular/material/table';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 const Materials = [
@@ -32,6 +34,9 @@ const Materials = [
   MatButtonModule,
   MatIconModule,
   MatDividerModule,
+  MatTabsModule,
+  MatTableModule,
+  MatCheckboxModule
 ];
 
 @NgModule({
