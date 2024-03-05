@@ -12,14 +12,15 @@ import { ProductTableComponent } from './product-table/product-table.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  {
-    path: 'admin',
-    children: [
-      { path: '', component: AdminComponent },
-      { path: 'products', component: ProductTableComponent },
-      { path: 'users', component: UserTableComponent },
-    ],
-  },
+  { path: 'admin', component: AdminComponent},
+  // {
+  //   path: 'admin',
+  //   children: [
+  //     { path: '', component: AdminComponent },
+  //     { path: 'products', component: ProductTableComponent },
+  //    // { path: 'users', component: UserTableComponent },
+  //   ],
+  // },
   { path: 'lighting', component: LightingComponent },
   { path: 'bedroom', component: BedroomComponent },
   { path: 'cart', component: CartComponent },
