@@ -15,6 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
 import {MatTableModule} from '@angular/material/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 const Materials = [
@@ -36,7 +37,8 @@ const Materials = [
   MatDividerModule,
   MatTabsModule,
   MatTableModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatSidenavModule
 ];
 
 @NgModule({
