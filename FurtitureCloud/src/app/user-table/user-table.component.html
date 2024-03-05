@@ -1,59 +1,54 @@
-<div class="outer">
+<table>
+  <thead>
+    <tr>
+      @for (col of displayedColumns; track col) {
+      <th scope="col">{{ col }}</th>
+      }
+    </tr>
+  </thead>
+  <tbody>
+    @for (user of users; track user) {
+    <tr (click)="clicked(user)">
+      <th scope="row">{{ user.user_id }}</th>
+      <td>{{ user.email }}</td>
+      <td>{{ user.firstName }}</td>
+      <td>{{ user.lastName }}</td>
+      <td>{{ user.address }}</td>
+      <td>{{ user.cartData }}</td>
+      <td>{{ user.wishListData }}</td>
+    </tr>
+  }
+  </tbody>
+</table>
 
 
-    <div>
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-            <ng-container matColumnDef="select">
-                <th mat-header-cell *matHeaderCellDef>
-                    <mat-checkbox (change)="$event ? toggleAllRows() : null"
-                        [checked]="selection.hasValue() && isAllSelected()"
-                        [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
-                    </mat-checkbox>
-                </th>
-                <td mat-cell *matCellDef="let row">
-                    <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
-                        [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
-                    </mat-checkbox>
-                </td>
-            </ng-container>
+<div class="form-div">
+  <h3>Create / Edit Users</h3>
+  <form>
+    <label for="user_id">User ID: </label>
+    <input type="text" id="user_id" name="user_id" [(ngModel)]="defaultFormInputs[0]"/><br /><br />
 
-            <ng-container matColumnDef="user_id">
-                <th mat-header-cell *matHeaderCellDef>SKU</th>
-                <td mat-cell *matCellDef="let item">{{ item.user_id }}</td>
-            </ng-container>
+    <label for="name">Name: </label>
+    <input type="text" id="name" name="name" [(ngModel)]="defaultFormInputs[1]" /><br /><br />
 
-            <ng-container matColumnDef="email">
-                <th mat-header-cell *matHeaderCellDef>Name</th>
-                <td mat-cell *matCellDef="let item">{{ item.email }}</td>
-            </ng-container>
+    <label for="firstname">First Name: </label>
+    <input type="text" id="firstname" name="firstname" [(ngModel)]="defaultFormInputs[2]" /><br /><br />
 
-            <ng-container matColumnDef="firstName">
-                <th mat-header-cell *matHeaderCellDef>Description</th>
-                <td mat-cell *matCellDef="let item">{{ item.firstName }}</td>
-            </ng-container>
+    <label for="lastname">Last Name: </label>
+    <input type="text" id="lastname" name="lastname" [(ngModel)]="defaultFormInputs[3]"/><br /><br />
 
-            <ng-container matColumnDef="lastName">
-                <th mat-header-cell *matHeaderCellDef>Stock</th>
-                <td mat-cell *matCellDef="let item">{{ item.lastName }}</td>
-            </ng-container>
+    <label for="address">Address: </label>
+    <input type="text" id="address" name="address" [(ngModel)]="defaultFormInputs[4]"/><br /><br />
 
-            <ng-container matColumnDef="address">
-                <th mat-header-cell *matHeaderCellDef>Category</th>
-                <td mat-cell *matCellDef="let item">{{ item.address }}</td>
-            </ng-container>
+    <label for="cartdata">Cart: </label>
+    <input type="text" id="cartdata" name="cartdata" [(ngModel)]="defaultFormInputs[5]"/><br /><br />
 
-            <ng-container matColumnDef="cartData">
-                <th mat-header-cell *matHeaderCellDef>Price</th>
-                <td mat-cell *matCellDef="let item">${{ item.cartData }}</td>
-            </ng-container>
-            <ng-container matColumnDef="wishListData">
-                <th mat-header-cell *matHeaderCellDef>Price</th>
-                <td mat-cell *matCellDef="let item">${{ item.wishListData }}</td>
-            </ng-container>
+    <label for="wishlistdata">Wishlist: </label>
+    <input type="text" id="wishlistdata" name="wishlistdata" [(ngModel)]="defaultFormInputs[6]"/><br /><br />
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="selection.toggle(row)"></tr>
-        </table>
-    </div>
+    <button mat-raised-button color="accent">Add / Update</button>
+    <button (click)="clearAll()" mat-raised-button color="accent" >Clear All</button>
+    <button (click)="removeSelected()"  mat-raised-button color="accent">Remove</button> 
 
+  </form>
 </div>
