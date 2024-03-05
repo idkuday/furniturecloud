@@ -26,7 +26,10 @@
 
     <div routerLink="./" class="title">| Furniture Cloud |</div>
     <div class="icons">
-      <div id="login" routerLink="./login">Login <img src="../assets/login.svg" alt="" /></div>
+      <div *ngIf="!this.loginService.loggedIn" id="login" routerLink="./login">Login <img src="../assets/login.svg"
+          alt="" /></div>
+      <div *ngIf="this.loginService.loggedIn" id="login" routerLink="./login">Logout <img src="../assets/login.svg"
+          alt="" /></div>
       <div id="wishlist">
         Wishlist <img src="../assets/wishlist.svg" alt="" />
       </div>

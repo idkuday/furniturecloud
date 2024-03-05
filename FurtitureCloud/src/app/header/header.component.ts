@@ -7,17 +7,13 @@ import { LoginService } from '../login.service';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  login() {
-    console.log('Hi');
-
-    this.loginService.login({ email: 'Admin', password: '1234' });
-  }
+  loggedin: boolean;
   addToCart() {
     this.cartLength++;
   }
   placeholder: string = 'Search';
   cartLength: number = 0;
-  constructor(private loginService: LoginService) {
-    console.log('Here');
+  constructor(public loginService: LoginService) {
+    this.loggedin = loginService.loggedIn;
   }
 }

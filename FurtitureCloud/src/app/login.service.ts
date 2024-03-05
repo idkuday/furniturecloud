@@ -7,17 +7,15 @@ import { Injectable } from '@angular/core';
 export class LoginService {
   url = 'http://localhost:8000/auth/login';
   constructor(private HttpClientService: HttpClient) {}
-  user: any;
+  user: any = undefined;
+  loggedIn: boolean = false;
   login(login: { email: string; password: string }) {
-    console.log('here');
-
-    this.HttpClientService.post(this.url, login).subscribe((d: any) => {
-      console.log(d);
-      this.user = d.user;
-      localStorage.setItem('access_token', d.jwt);
-      this.HttpClientService.get('http://localhost:8000/admin').subscribe((e) =>
-        console.log(e)
-      );
-    });
+    localStorage.removeItem('access_token');
+    return this.HttpClientService.post(this.url, login);
+  }
+  logout() {
+    localStorage.removeItem('access_token');
+    this.loggedIn = false;
+    this.user = undefined;
   }
 }
