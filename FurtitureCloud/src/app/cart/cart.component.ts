@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -50,4 +51,9 @@ export class CartComponent {
   longText = `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
   from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
   originally bred for hunting.`;
+  constructor(private cartservice: CartService) {
+    this.items1 = cartservice.cart;
+
+  }
+  items1: any;
 }

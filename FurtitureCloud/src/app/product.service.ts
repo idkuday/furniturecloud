@@ -47,4 +47,9 @@ export class ProductService {
   deleteproduct(email: string) {
     return this.httpClient.delete(this.url + 'delete/' + email);
   }
+
+  getProductsFromCartById(product: any, id: number) {
+    return product.filter((item: { id: number; }) => item.id === id);
+  }
+
 }

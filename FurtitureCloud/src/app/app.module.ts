@@ -33,6 +33,7 @@ import { RegFormComponent } from './reg-form/reg-form.component';
 import { LoginComponent } from './login/login.component';
 import { ProductTableComponent } from './product-table/product-table.component';
 import { UserTableComponent } from './user-table/user-table.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { UserTableComponent } from './user-table/user-table.component';
     LoginComponent,
     ProductTableComponent,
     UserTableComponent,
+    ProductCardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, MaterialModule, FormsModule],
   providers: [
