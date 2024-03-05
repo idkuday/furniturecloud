@@ -14,7 +14,6 @@ import {
   provideHttpClient,
   withFetch,
 } from '@angular/common/http';
-import { LampsComponent } from './lamps/lamps.component';
 import { LightingComponent } from './lighting/lighting.component';
 import { BedroomComponent } from './bedroom/bedroom.component';
 import { CategoriesComponent } from './categories/categories.component';
@@ -33,11 +32,12 @@ import { RegFormComponent } from './reg-form/reg-form.component';
 import { LoginComponent } from './login/login.component';
 import { ProductTableComponent } from './product-table/product-table.component';
 import { UserTableComponent } from './user-table/user-table.component';
+import { ProductCardComponent } from './product-card/product-card.component';
+import { ProductPageComponent } from './product-page/product-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LampsComponent,
     LightingComponent,
     BedroomComponent,
     HomeComponent,
@@ -53,6 +53,8 @@ import { UserTableComponent } from './user-table/user-table.component';
     LoginComponent,
     ProductTableComponent,
     UserTableComponent,
+    ProductCardComponent,
+    ProductPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, MaterialModule, FormsModule],
   providers: [
