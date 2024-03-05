@@ -32,6 +32,7 @@ import { FormsModule } from '@angular/forms';
 import { RegFormComponent } from './reg-form/reg-form.component';
 import { LoginComponent } from './login/login.component';
 import { ProductTableComponent } from './product-table/product-table.component';
+import { UserTableComponent } from './user-table/user-table.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { ProductTableComponent } from './product-table/product-table.component';
     RegFormComponent,
     LoginComponent,
     ProductTableComponent,
+    UserTableComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, MaterialModule, FormsModule],
   providers: [
