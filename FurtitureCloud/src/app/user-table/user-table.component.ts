@@ -90,8 +90,8 @@ export class UserTableComponent {
     'firstName',
     'lastName',
     'address',
-    'cartData',
-    'wishListData',
+    // 'cartData',
+    // 'wishListData',
   ];
   dataSource = new MatTableDataSource<User>(ELEMENT_DATA);
   selection = new SelectionModel<User>(true, []);
