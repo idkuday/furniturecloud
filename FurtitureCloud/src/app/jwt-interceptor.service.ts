@@ -13,7 +13,7 @@ export class JwtInterceptorService implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const token = localStorage.getItem('access_token'); // you probably want to store it in localStorage or something
+    const token = localStorage.getItem('access_token');
 
     if (!token) {
       return next.handle(req);

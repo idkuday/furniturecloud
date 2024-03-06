@@ -24,3 +24,17 @@
 .form-label {
     margin-bottom: 0.25rem;
 }
+.row3 {
+    margin:auto;
+    margin-top: 2em;
+    padding: 1rem;
+    color: red;
+    justify-content: center;
+}
+.row2 {
+    margin: auto;
+    margin-top: 2em;
+    padding: 1rem;
+    color: green;
+    justify-content: center;
+}

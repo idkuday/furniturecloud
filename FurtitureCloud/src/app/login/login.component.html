@@ -1,5 +1,7 @@
-<div *ngIf="!user">
+<div *ngIf="!isLoggedIn()">
+
     <div class="row">
+        <h2 style="border-bottom: solid; border-color: peachpuff;">LOGIN</h2>
         <div>
             <form (ngSubmit)="onSubmitLogin()" #loginForm="ngForm">
                 <div class="col-4">
@@ -18,14 +20,19 @@
         </div>
     </div>
 
+    <div *ngIf="!isLoggedIn() && clicked" class="row" style="color: red;">
+        Invalid Email/Password
+    </div>
+
+
     <div class="row">
         <p>Don't Have An Account? Sign Up Here!</p>
-        <button color="accent" type="submit" class="" mat-raised-button routerLink="./register">Sign Up</button>
+        <button color="accent" type="submit" class="" mat-raised-button routerLink="/register">Sign Up</button>
     </div>
 </div>
-<div *ngIf="user">
+<div *ngIf="isLoggedIn()">
     <div class="row">
-        <p>Logged in as {{user.email}}</p>
+        <p>Logged in as {{user.firstName}}</p>
         <button color="warn" type="submit" mat-raised-button (click)="logout()">Logout</button>
     </div>
 </div>

@@ -1,36 +1,46 @@
-<div class="row">
+<div *ngIf="!isLoggedIn()" class="row">
     <div>
         <form (ngSubmit)="onSubmitRegister()" #registerForm="ngForm">
             <div class="col-4">
-                <label class="form-label" for="registerName">Username</label>
-                <input class="form-control" type="text" id="registerName" name="register" [(ngModel)]="register" />
-                                
+                <label class="form-label" for="registerName">Email</label>
+                <input class="form-control" type="text" id="registerEmail" name="register" [(ngModel)]="email"
+                    required />
+
             </div>
             <div class="col-4">
                 <label class="form-label" for="registerPassword">Password</label>
-                <input class="form-control" type="password" id="registerPassword" name="register" [(ngModel)]="password" />
-                
+                <input class="form-control" type="password" id="registerPassword" name="register" [(ngModel)]="password"
+                    required />
+
             </div>
 
             <div class="col-4">
                 <label class="form-label" for="registerFirstName">First Name</label>
-                <input class="form-control" type="text" id="registerFirstName" name="register" [(ngModel)]="firstname" />
-                
+                <input class="form-control" type="text" id="registerFirstName" name="register" [(ngModel)]="firstname"
+                    required />
+
             </div>
 
             <div class="col-4">
                 <label class="form-label" for="registerLastName">Last Name</label>
-                <input class="form-control" type="text" id="registerLastName" name="register" [(ngModel)]="lastname" />
-                
+                <input class="form-control" type="text" id="registerLastName" name="register" [(ngModel)]="lastname"
+                    required />
+
             </div>
 
             <div class="col-4">
                 <label class="form-label" for="registerAddress">Address</label>
-                <input class="form-control" type="text" id="registerAddress" name="register" [(ngModel)]="address" />
-                
+                <input class="form-control" type="text" id="registerAddress" name="register" [(ngModel)]="address"
+                    required />
+
             </div>
 
-            <button color="primary" type="submit" class="" mat-raised-button >Sign Up</button>
+            <button color="primary" type="submit" class="" mat-raised-button>Sign Up</button>
         </form>
     </div>
+</div>
+<div *ngIf="!isLoggedIn() && error" class="row row3">{{error}}</div>
+<div *ngIf="!isLoggedIn() && success" class="row row2">User Registered</div>
+<div *ngIf="isLoggedIn()" class="row">
+    <h1>You are Registered and Logged in!</h1>
 </div>

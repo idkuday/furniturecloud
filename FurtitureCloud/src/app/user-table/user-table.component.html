@@ -17,7 +17,7 @@
       <td>{{ user.cartData }}</td>
       <td>{{ user.wishListData }}</td>
     </tr>
-  }
+    }
   </tbody>
 </table>
 
@@ -26,7 +26,7 @@
   <h3>Create / Edit Users</h3>
   <form>
     <label for="user_id">User ID: </label>
-    <input type="text" id="user_id" name="user_id" [(ngModel)]="defaultFormInputs[0]"/><br /><br />
+    <input type="text" id="user_id" name="user_id" [(ngModel)]="defaultFormInputs[0]" /><br /><br />
 
     <label for="name">Name: </label>
     <input type="text" id="name" name="name" [(ngModel)]="defaultFormInputs[1]" /><br /><br />
@@ -35,20 +35,20 @@
     <input type="text" id="firstname" name="firstname" [(ngModel)]="defaultFormInputs[2]" /><br /><br />
 
     <label for="lastname">Last Name: </label>
-    <input type="text" id="lastname" name="lastname" [(ngModel)]="defaultFormInputs[3]"/><br /><br />
+    <input type="text" id="lastname" name="lastname" [(ngModel)]="defaultFormInputs[3]" /><br /><br />
 
     <label for="address">Address: </label>
-    <input type="text" id="address" name="address" [(ngModel)]="defaultFormInputs[4]"/><br /><br />
+    <input type="text" id="address" name="address" [(ngModel)]="defaultFormInputs[4]" /><br /><br />
 
     <label for="cartdata">Cart: </label>
-    <input type="text" id="cartdata" name="cartdata" [(ngModel)]="defaultFormInputs[5]"/><br /><br />
+    <input type="text" id="cartdata" name="cartdata" [(ngModel)]="defaultFormInputs[5]" /><br /><br />
 
     <label for="wishlistdata">Wishlist: </label>
-    <input type="text" id="wishlistdata" name="wishlistdata" [(ngModel)]="defaultFormInputs[6]"/><br /><br />
+    <input type="text" id="wishlistdata" name="wishlistdata" [(ngModel)]="defaultFormInputs[6]" /><br /><br />
 
     <button mat-raised-button color="accent">Add / Update</button>
-    <button (click)="clearAll()" mat-raised-button color="accent" >Clear All</button>
-    <button (click)="removeSelected()"  mat-raised-button color="accent">Remove</button> 
+    <button (click)="clearAll()" mat-raised-button color="accent">Clear All</button>
+    <button (click)="removeSelected()" mat-raised-button color="accent">Remove</button>
 
   </form>
 </div>

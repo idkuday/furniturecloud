@@ -1,44 +1,53 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, afterRender } from '@angular/core';
+import { take } from 'rxjs';
 
-// @Injectable({
-//   providedIn: 'root'
-// })
+@Injectable({
+  providedIn: 'root',
+})
 //Login Service will be separate
 export class UserService {
-  url: string = 'http://localhost:8080/user/';
+  enabled: boolean = false;
+  url: string = 'http://localhost:8000/admin/user/';
   users: any[] = [];
-  userId: any = '';
-  userOb!: {
-    email: string;
-    firstName: string;
-    lastName: string;
-    cartData: string;
-    wishList: string;
-  };
-  constructor(private httpClient: HttpClient) {}
-
-  getUser(email: string) {
+  constructor(private httpClient: HttpClient) {
+    // afterRender(() => {
+    //   this.checkAccess();
+    // });
+  }
+  checkAccess() {
+    let e = localStorage.getItem('FC_Admin');
+    if (!e) {
+      this.httpClient
+        .get('http://localhost:8000/admin')
+        .pipe(take(1))
+        .subscribe((d: any) => {
+          this.enabled = d.jwt === 'Admin Access';
+          localStorage.setItem('FC_Admin', JSON.stringify(this.enabled));
+          console.log(d);
+        });
+      return;
+    }
+    this.enabled = JSON.parse(e);
+  }
+  getUser(userId: string) {
     let user: any;
-    this.httpClient.get(this.url + 'get/' + email).subscribe((d) => (user = d));
-    return user;
+    return this.httpClient.get(this.url + 'get/' + userId);
   }
 
   getAllUsers() {
-    this.httpClient
-      .get<any[]>(this.url + 'getAll')
-      .subscribe((d) => this.users.push(...d));
+    return this.httpClient.get<any[]>(this.url + 'getAll');
+    // .subscribe((d) => this.users.push(...d));
   }
 
-  createUser(user: any) {
-    return this.httpClient
-      .post(this.url + 'create', user)
-      .subscribe((d) => (this.userId = d));
-  }
   updateUser(user: any) {
-    return this.httpClient.put(this.url + 'update/', user);
+    this.httpClient.put(this.url + 'update/', user);
   }
-  deleteUser(email: string) {
-    return this.httpClient.delete(this.url + 'delete/' + email);
+  deleteUser(userId: number) {
+    return this.httpClient
+      .delete(this.url + 'delete/' + userId)
+      .subscribe((d) => {
+        console.log('Delete User :' + d);
+      });
   }
 }

@@ -26,14 +26,14 @@
 
     <div routerLink="./" class="title">| Furniture Cloud |</div>
     <div class="icons">
-      <div *ngIf="!this.loginService.loggedIn" id="login" routerLink="./login">Login <img src="../assets/login.svg"
-          alt="" /></div>
-      <div *ngIf="this.loginService.loggedIn" id="login" routerLink="./login">Logout <img src="../assets/login.svg"
-          alt="" /></div>
+      <div *ngIf="!isLoggedIn()" id="login" routerLink="./login">Login <img src="../assets/login.svg" alt="" /></div>
+      <div *ngIf="isLoggedIn()" id="login" routerLink="./login">Logout <img src="../assets/login.svg" alt="" /></div>
+      <div *ngIf="isAdmin()" id="login" routerLink="./login">Admin <mat-icon>person</mat-icon>
+      </div>
       <div id="wishlist">
         Wishlist <img src="../assets/wishlist.svg" alt="" />
       </div>
-      <div routerLink="./cart" [matBadge]="cartLength" matBadgeOverlap="false" id="cart" (click)="addToCart()">
+      <div routerLink="./cart" [matBadge]="cartLength" matBadgeOverlap="false" id="cart">
         Cart <img src="../assets/cart.svg" alt="" />
       </div>
     </div>

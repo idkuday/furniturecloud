@@ -34,6 +34,7 @@ import { ProductTableComponent } from './product-table/product-table.component';
 import { UserTableComponent } from './user-table/user-table.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductPageComponent } from './product-page/product-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,14 @@ import { ProductPageComponent } from './product-page/product-page.component';
     ProductCardComponent,
     ProductPageComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, MaterialModule, FormsModule],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    MaterialModule,
+    FormsModule,
+  ],
   providers: [
     provideClientHydration(),
     provideAnimationsAsync(),
