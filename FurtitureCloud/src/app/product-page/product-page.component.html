@@ -1,3 +1,7 @@
+<button (click)="sortByName()" mat-raised-button>Sort By Name</button>
+<button (click)="sortByPrice()" mat-raised-button>Sort By Price</button>
 @for (item of items; track item) {
     <app-product-card [item]="item" [isCart]="false"></app-product-card>
 }
+
+

@@ -8,7 +8,31 @@ import { Component, Input } from '@angular/core';
 
 export class ProductPageComponent {
 
-  // @Input() items: any; // already filtered products
+  // @Input() category: string;
+
+  // dependent on product service to get products by category
+  // sortedItems = getAllItemsByCategory(this.category);
+
+  nameOrder: boolean = false;
+  priceOrder: boolean = false;
+
+  sortByName() {
+    this.nameOrder = !this.nameOrder;
+    if (this.nameOrder) {
+      this.items.sort((a, b) => a.name.localeCompare(b.name));
+    } else {
+      this.items.sort((a, b) => b.name.localeCompare(a.name));
+    }
+  }
+
+  sortByPrice() {
+    this.priceOrder = !this.priceOrder;
+    if (this.priceOrder) {
+      this.items.sort((a, b) => a.price - b.price);
+    } else {
+      this.items.sort((a, b) => b.price - a.price);
+    }
+  }
 
   items = [
     {
@@ -34,6 +58,14 @@ export class ProductPageComponent {
       category: 'room5',
       stock: 18,
       description: 'aaa7'
+    },
+    {
+      id: 4,
+      name: 'Sofa',
+      price: 100000.0,
+      category: 'bedroom',
+      stock: 376,
+      description: 'qwer'
     }
   ];
 
