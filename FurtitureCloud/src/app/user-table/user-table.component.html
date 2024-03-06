@@ -46,7 +46,7 @@
     <label for="wishlistdata">Wishlist: </label>
     <input type="text" id="wishlistdata" name="wishlistdata" [(ngModel)]="defaultFormInputs[6]" /><br /><br />
 
-    <button mat-raised-button color="accent">Add / Update</button>
+    <button (click)="addUser()" mat-raised-button color="accent">Add / Update</button>
     <button (click)="clearAll()" mat-raised-button color="accent">Clear All</button>
     <button (click)="removeSelected()" mat-raised-button color="accent">Remove</button>
 

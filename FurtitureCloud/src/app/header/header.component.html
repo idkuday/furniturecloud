@@ -28,7 +28,7 @@
     <div class="icons">
       <div *ngIf="!isLoggedIn()" id="login" routerLink="./login">Login <img src="../assets/login.svg" alt="" /></div>
       <div *ngIf="isLoggedIn()" id="login" routerLink="./login">Logout <img src="../assets/login.svg" alt="" /></div>
-      <div *ngIf="isAdmin()" id="login" routerLink="./login">Admin <mat-icon>person</mat-icon>
+      <div *ngIf="isAdmin()" id="login" routerLink="./admin">Admin <mat-icon>person</mat-icon>
       </div>
       <div id="wishlist">
         Wishlist <img src="../assets/wishlist.svg" alt="" />

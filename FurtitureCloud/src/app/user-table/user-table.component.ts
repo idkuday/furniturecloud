@@ -30,7 +30,7 @@ export class UserTableComponent {
     // 'cartData',
     // 'wishListData',
   ];
-  users: any = undefined;
+  users: any[] = [];
   //   {
   //     user_id: 1,
   //     email: 'rrrr@xxx.com',
@@ -118,6 +118,29 @@ export class UserTableComponent {
       this.users.splice(index, 1);
     }
   }
+  addUser() {
+    let user: any = {
+      user_id: this.defaultFormInputs[0],
+      email: this.defaultFormInputs[1],
+      firstName: this.defaultFormInputs[2],
+      lastName: this.defaultFormInputs[3],
+      address: this.defaultFormInputs[4],
+    };
+    this.userService
+      .createUser(user)
+      .pipe(take(1))
+      .subscribe((d) => (user = d));
+  }
   isEnabled() {}
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) {
+    afterRender(() => {
+      this.userService
+        .getAllUsers()
+        .pipe(take(1))
+        .subscribe((d) => {
+          this.users = d;
+          console.log(this.users);
+        });
+    });
+  }
 }

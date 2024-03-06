@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 // })
 
 export class ProductService {
-  url: string = 'http://localhost:8080/product/';
+  url: string = 'http://localhost:8080/user/product/';
   products: any[] = [];
   constructor(private httpClient: HttpClient) {}
 
@@ -18,18 +18,18 @@ export class ProductService {
     return product;
   }
 
-  getAllProducts(category = 'none') {
+  getAllProducts(category = 'none', sort: string) {
     //Category based query else all products are queried
     // represents products
     if (category === 'none')
       this.httpClient
-        .get<any[]>(this.url + 'getAll/none/none')
+        .get<any[]>(this.url + 'getAll/none/none/' + sort)
         .subscribe((e) => {
           this.products.push(...e);
         });
     else
       this.httpClient
-        .get<any[]>(this.url + 'getAll/Category/' + category)
+        .get<any[]>(this.url + 'getAll/Category/' + category + '/' + sort)
         .subscribe((e) => {
           this.products.push(...e);
         });
@@ -49,7 +49,6 @@ export class ProductService {
   }
 
   getProductsFromCartById(product: any, id: number) {
-    return product.filter((item: { id: number; }) => item.id === id);
+    return product.filter((item: { id: number }) => item.id === id);
   }
-
 }

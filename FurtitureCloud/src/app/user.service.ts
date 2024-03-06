@@ -41,7 +41,10 @@ export class UserService {
   }
 
   updateUser(user: any) {
-    this.httpClient.put(this.url + 'update/', user);
+    return this.httpClient.put(this.url + 'update', user);
+  }
+  createUser(user: any) {
+    return this.httpClient.put(this.url + 'create', user);
   }
   deleteUser(userId: number) {
     return this.httpClient
