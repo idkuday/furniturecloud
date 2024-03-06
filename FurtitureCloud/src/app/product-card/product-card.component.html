@@ -32,14 +32,25 @@
       <mat-icon>delete</mat-icon>
     </button>
     } @else {
-    <button
-      class="trash-button"
-      mat-fab
-      color="primary"
-      aria-label="plus icon button"
-    >
-      <mat-icon>add</mat-icon>
-    </button>
+      <div class="button-div">
+        <button
+        class="trash-button"
+        mat-fab
+        color="warn"
+        aria-label="plus icon button"
+      >
+        <mat-icon>favorite</mat-icon>
+        </button>
+      <button
+        class="trash-button"
+        mat-fab
+        color="primary"
+        aria-label="plus icon button"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+      </div>
+      
     }
   </div>
 </mat-card>
