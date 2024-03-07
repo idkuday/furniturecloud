@@ -41,7 +41,7 @@
     <label for="price">Price: </label>
     <input type="text" id="price" name="price" [(ngModel)]="defaultFormInputs[5]"/><br /><br />
 
-    <button mat-raised-button color="accent">Add / Update</button>
+    <button (click)="addFromField()" mat-raised-button color="accent">Add / Update</button>
     <button (click)="clearAll()" mat-raised-button color="accent" >Clear All</button>
     <button (click)="removeSelected()"  mat-raised-button color="accent">Remove</button> 
 

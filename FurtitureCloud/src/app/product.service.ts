@@ -1,54 +1,31 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-// @Injectable({
-//   providedIn: 'root'
-// })
-
+@Injectable({
+  providedIn: 'root',
+})
 export class ProductService {
-  url: string = 'http://localhost:8080/user/product/';
+  url: string = 'http://localhost:8000/auth/product/';
   products: any[] = [];
   constructor(private httpClient: HttpClient) {}
 
-  getProduct(SKU: number): any {
-    let product;
-    this.httpClient
-      .get(this.url + 'get/' + SKU)
-      .subscribe((d) => (product = d));
-    return product;
-  }
+  // getProduct(SKU: number): any {
+  //   let product;
+  //   this.httpClient
+  //     .get(this.url + 'get/' + SKU)
+  //     .subscribe((d) => (product = d));
+  //   return product;
+  // }
 
   getAllProducts(category = 'none', sort: string) {
     //Category based query else all products are queried
     // represents products
-    if (category === 'none')
-      this.httpClient
-        .get<any[]>(this.url + 'getAll/none/none/' + sort)
-        .subscribe((e) => {
-          this.products.push(...e);
-        });
-    else
-      this.httpClient
-        .get<any[]>(this.url + 'getAll/Category/' + category + '/' + sort)
-        .subscribe((e) => {
-          this.products.push(...e);
-        });
-  }
-  createproduct(product: any) {
-    let sku: any = 0;
-    this.httpClient
-      .post(this.url + 'create', product)
-      .subscribe((d) => (sku = d));
-    this.products.push(this.getProduct(sku));
-  }
-  updateproduct(product: any) {
-    return this.httpClient.put(this.url + 'update/', product);
-  }
-  deleteproduct(email: string) {
-    return this.httpClient.delete(this.url + 'delete/' + email);
-  }
-
-  getProductsFromCartById(product: any, id: number) {
-    return product.filter((item: { id: number }) => item.id === id);
+    if (category === 'none') {
+      return this.httpClient.get<any[]>(this.url + 'getAll/none/none/' + sort);
+    } else {
+      return this.httpClient.get<any[]>(
+        this.url + 'getAll/Category/' + category + '/' + sort
+      );
+    }
   }
 }

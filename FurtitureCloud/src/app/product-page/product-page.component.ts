@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-product-page',
@@ -12,6 +13,10 @@ export class ProductPageComponent {
 
   // dependent on product service to get products by category
   // sortedItems = getAllItemsByCategory(this.category);
+
+  // constructor(private productService: ProductService) {
+
+  // }
 
   nameOrder: boolean = false;
   priceOrder: boolean = false;
