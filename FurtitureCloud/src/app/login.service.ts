@@ -1,12 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import {
-  DoCheck,
-  Injectable,
-  OnChanges,
-  SimpleChanges,
-  afterRender,
-} from '@angular/core';
+import { Injectable, afterRender } from '@angular/core';
 import { UserService } from './user.service';
+import { AdminService } from './admin.service';
+import { CartService } from './cart.service';
+import { ProductService } from './product.service';
+import { take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +14,8 @@ export class LoginService {
   registerUrl = 'http://localhost:8000/auth/reg/';
   constructor(
     private HttpClientService: HttpClient,
-    private userService: UserService
+    private adminService: AdminService,
+    private productService: ProductService
   ) {
     if (!this.loggedIn) {
       afterRender(() => {
@@ -26,6 +25,15 @@ export class LoginService {
           localStorage.getItem('FC_loggedin') || 'false'
         );
         this.saveState();
+
+        this.productService
+          .getAllProducts('none', 'none')
+          .pipe(take(1))
+          .subscribe((d) => {
+            this.productService.products = d;
+            this.adminService.checkAccess();
+            // this.setCart();
+          });
       });
     }
   }
@@ -38,6 +46,10 @@ export class LoginService {
     return this.HttpClientService.post(this.loginUrl, login);
   }
 
+  // setCart() {
+  //   this.cartService.parseCart(this.user.cartData);
+  //   console.log('SET CART: ' + this.user.cartData);
+  // }
   logout() {
     localStorage.removeItem('FC_loggedin');
     localStorage.removeItem('FC_user');
@@ -45,6 +57,7 @@ export class LoginService {
     localStorage.removeItem('access_token');
     this.loggedIn = false;
     this.user = undefined;
+    window.location.reload();
   }
 
   register(user: any, password: string) {
@@ -52,7 +65,7 @@ export class LoginService {
   }
 
   saveState() {
-    this.userService.checkAccess();
+    this.adminService.checkAccess();
 
     localStorage.setItem('FC_user', JSON.stringify(this.user));
     localStorage.setItem('FC_loggedin', JSON.stringify(this.loggedIn));

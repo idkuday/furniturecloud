@@ -1,16 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { take } from 'rxjs';
-
+import { Subject, take } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AdminService {
   enabled: boolean = false;
-  url: string = 'http://localhost:8000/admin/user/';
+
   productUrl: string = 'http://localhost:8000/admin/product/';
-  users: any[] = [];
   constructor(private httpClient: HttpClient) {
     // afterRender(() => {
     //   this.checkAccess();
@@ -35,8 +33,8 @@ export class AdminService {
     }
     this.enabled = JSON.parse(e);
   }
+  url: string = 'http://localhost:8000/admin/user/';
   getUser(userId: string) {
-    let user: any;
     return this.httpClient.get(this.url + 'get/' + userId);
   }
 
@@ -45,33 +43,29 @@ export class AdminService {
     // .subscribe((d) => this.users.push(...d));
   }
 
-  updateUser(user: any) {
-    return this.httpClient.put(this.url + 'update', user);
+  updateUser(user: any, password: string) {
+    return this.httpClient.put(this.url + 'update/' + password, user);
   }
-  createUser(user: any) {
-    return this.httpClient.put(this.url + 'create', user);
+  createUser(user: any, password: string) {
+    return this.httpClient.post(this.url + 'create/' + password, user);
   }
   deleteUser(userId: number) {
-    return this.httpClient
-      .delete(this.url + 'delete/' + userId)
-      .subscribe((d) => {
-        console.log('Delete User :' + d);
-      });
+    return this.httpClient.delete(this.url + 'delete/' + userId);
   }
 
   // products
 
   createproduct(product: any) {
     let sku: any = 0;
-    this.httpClient
-      .post(this.productUrl + 'create', product)
-      .subscribe((d) => (sku = d));
+    return this.httpClient.post(this.productUrl + 'create', product);
     // this.products.push(this.getProduct(sku));
   }
+
   updateproduct(product: any) {
-    return this.httpClient.put(this.productUrl + 'update/', product);
+    return this.httpClient.put(this.productUrl + 'update', product);
   }
   deleteproduct(sku: number) {
+    console.log(sku);
     return this.httpClient.delete(this.productUrl + 'delete/' + sku);
   }
 

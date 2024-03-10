@@ -2,6 +2,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserService } from '../user.service';
+import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-admin',
@@ -10,7 +11,7 @@ import { UserService } from '../user.service';
 })
 export class AdminComponent {
   isEnabled(): boolean {
-    return this.userService.enabled;
+    return this.adminService.enabled;
   }
-  constructor(private userService: UserService) {}
+  constructor(private adminService: AdminService) {}
 }

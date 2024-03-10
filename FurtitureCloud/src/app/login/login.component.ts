@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Output, afterRender } from '@angular/core';
 import { LoginService } from '../login.service';
+import { UserService } from '../user.service';
+import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-login',
@@ -29,6 +31,10 @@ export class LoginComponent {
           this.loginservice.loggedIn = true;
           this.loginservice.saveState();
           localStorage.setItem('access_token', d.jwt);
+          window.location.reload();
+          // this.loginservice.setCart();
+          this.userService.user = this.user;
+          this.adminService.checkAccess();
         } else {
           this.clicked = true;
         }
@@ -38,5 +44,9 @@ export class LoginComponent {
     this.user = this.loginservice.user;
     return this.loginservice.loggedIn;
   }
-  constructor(private loginservice: LoginService) {}
+  constructor(
+    private loginservice: LoginService,
+    private userService: UserService,
+    private adminService: AdminService
+  ) {}
 }

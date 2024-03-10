@@ -13,10 +13,9 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
-import {MatTableModule} from '@angular/material/table';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatSidenavModule} from '@angular/material/sidenav';
-
+import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 const Materials = [
   MatToolbarModule,
@@ -38,7 +37,8 @@ const Materials = [
   MatTabsModule,
   MatTableModule,
   MatCheckboxModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatInputModule,
 ];
 
 @NgModule({

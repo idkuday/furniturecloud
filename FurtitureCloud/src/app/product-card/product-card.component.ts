@@ -1,27 +1,29 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ProductTableComponent } from '../product-table/product-table.component';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',
-  styleUrl: './product-card.component.css'
+  styleUrl: './product-card.component.css',
 })
-
-
-
 export class ProductCardComponent implements OnInit {
-
   @Input() item: any; // type product
-  @Input() imgUrl: string = 'https://material.angular.io/assets/img/examples/shiba2.jpg';
+  @Input() imgUrl: string =
+    'https://material.angular.io/assets/img/examples/shiba2.jpg';
   @Input() isCart: boolean = false;
 
-  constructor() {
+  @Output() quantityChanged: EventEmitter<number> = new EventEmitter<number>();
+  @Output() removeFromCart: EventEmitter<void> = new EventEmitter<void>();
 
+  constructor() {}
+
+  changeQuantity(event: any) {
+    this.quantityChanged.emit(event.target.value);
   }
 
-  ngOnInit(): void {
-    
+  removeProduct() {
+    this.removeFromCart.emit();
   }
+  ngOnInit(): void {}
 
   giveRange(stock: number) {
     let range = [];
@@ -30,5 +32,4 @@ export class ProductCardComponent implements OnInit {
     }
     return range;
   }
-  
 }

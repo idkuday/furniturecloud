@@ -8,7 +8,7 @@
   </thead>
   <tbody>
     @for (item of items; track item) {
-    <tr (click)="clicked(item)">
+    <tr id="{{item.sku}}" (click)="clicked(item)">
       <th scope="row">{{ item.sku }}</th>
       <td>{{ item.name }}</td>
       <td>{{ item.descr }}</td>
@@ -24,7 +24,7 @@
   <h3>Create / Edit Product</h3>
   <form>
     <label for="sku">SKU: </label>
-    <input type="text" id="sku" name="sku" [(ngModel)]="defaultFormInputs[0]"/><br /><br />
+    <input type="text" id="sku" name="sku" [(ngModel)]="defaultFormInputs[0]" disabled="true" /><br /><br />
 
     <label for="name">Name: </label>
     <input type="text" id="name" name="name" [(ngModel)]="defaultFormInputs[1]" /><br /><br />
@@ -33,19 +33,17 @@
     <input type="text" id="description" name="description" [(ngModel)]="defaultFormInputs[2]" /><br /><br />
 
     <label for="stock">Stock: </label>
-    <input type="text" id="stock" name="stock" [(ngModel)]="defaultFormInputs[3]"/><br /><br />
+    <input type="number" id="stock" name="stock" [(ngModel)]="defaultFormInputs[3]" /><br /><br />
 
     <label for="category">Category: </label>
-    <input type="text" id="category" name="category" [(ngModel)]="defaultFormInputs[4]"/><br /><br />
+    <input type="text" id="category" name="category" [(ngModel)]="defaultFormInputs[4]" /><br /><br />
 
     <label for="price">Price: </label>
-    <input type="text" id="price" name="price" [(ngModel)]="defaultFormInputs[5]"/><br /><br />
+    <input type="number" id="price" name="price" [(ngModel)]="defaultFormInputs[5]" /><br /><br />
 
     <button (click)="addFromField()" mat-raised-button color="accent">Add / Update</button>
-    <button (click)="clearAll()" mat-raised-button color="accent" >Clear All</button>
-    <button (click)="removeSelected()"  mat-raised-button color="accent">Remove</button> 
+    <button (click)="clearAll()" mat-raised-button color="accent">Clear All</button>
+    <button (click)="removeSelected()" mat-raised-button color="accent">Remove</button>
 
   </form>
 </div>
-
-  

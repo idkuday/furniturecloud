@@ -8,7 +8,7 @@
   </thead>
   <tbody>
     @for (user of users; track user) {
-    <tr (click)="clicked(user)">
+    <tr id="{{user.user_id}}" (click)="clicked(user)">
       <th scope="row">{{ user.user_id }}</th>
       <td>{{ user.email }}</td>
       <td>{{ user.firstName }}</td>
@@ -26,7 +26,7 @@
   <h3>Create / Edit Users</h3>
   <form>
     <label for="user_id">User ID: </label>
-    <input type="text" id="user_id" name="user_id" [(ngModel)]="defaultFormInputs[0]" /><br /><br />
+    <input type="text" id="user_id" name="user_id" [(ngModel)]="defaultFormInputs[0]" disabled="true" /><br /><br />
 
     <label for="name">Name: </label>
     <input type="text" id="name" name="name" [(ngModel)]="defaultFormInputs[1]" /><br /><br />

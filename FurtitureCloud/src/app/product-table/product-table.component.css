@@ -56,10 +56,11 @@ label {
   margin: auto;
   padding: 1em;
   border-style: solid;
-  border-width: 1px;
+  border-width: 3px;
   border-color: black;
   background-color: white;
   box-sizing: border-box;
+ 
 }
 
 .form-div h3 {
@@ -71,10 +72,11 @@ form {
     width: fit-content;
     padding: 1em;
     border-style: solid;
-    border-width: 1px;
+    border-width: 3px;
     border-color: black;
     background-color: white;
     margin-bottom: 1em;
+    border-radius: 15px;
 }
 
 form button {
@@ -83,4 +85,8 @@ form button {
 
 tbody :hover {
     opacity: 0.8;
+}
+.selected{
+  border:solid;
+  border-color: rgb(0, 255, 55);
 }

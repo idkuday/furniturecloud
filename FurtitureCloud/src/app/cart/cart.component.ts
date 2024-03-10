@@ -1,59 +1,71 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, afterRender } from '@angular/core';
 import { CartService } from '../cart.service';
+import { ProductService } from '../product.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css',
 })
-export class CartComponent {
-  items = [
-    {
-      id: 1,
-      name: 'Silver Stainless Steel (Set of 2) Airtight Cookies Canister With Lid',
-      price: 16344,
-      category: 'Kitchen Stuff',
-      stock: 12,
-      description: 'Get your kitchen a very well-established look and ensure a better way of living. You can now give an unforgettable experience to your guests when you serve them Indian food in URBAN SPOON products. '
-    },
-    {
-      id: 2,
-      name: 'SofaSofaSofa',
-      price: 20.0,
-      category: 'room3',
-      stock: 12,
-      description: 'aaa4'
-    },
-    {
-      id: 3,
-      name: 'SofaSofaSofaSofa',
-      price: 19.0,
-      category: 'room5',
-      stock: 18,
-      description: 'aaa7'
-    }
-  ];
+export class CartComponent implements OnInit {
+  cart: { product: any; quantity: number }[] = [];
+  imgUrl: any;
 
-  giveRange(stock: number) {
-    let range = [];
-    for (let i = 1; i < stock; i++) {
-      range.push(i);
-    }
-    return range;
+  constructor(
+    private cartService: CartService,
+    private productService: ProductService // Inject ProductService
+  ) {
+    afterRender(() => {
+      this.doRender$.next();
+    });
   }
 
-  foods: any[] = [
-    {value: '1', viewValue: '1'},
-    {value: '2', viewValue: '2'},
-    {value: '3', viewalue: '3'}
-  ];
-
-  longText = `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
-  from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-  originally bred for hunting.`;
-  constructor(private cartservice: CartService) {
-    this.items1 = cartservice.cart;
-
+  ngOnInit(): void {
+    this.doRender$.subscribe(() => this.doRender());
   }
-  items1: any;
+
+  changeQuantity(item: { product: any; quantity: number }, op: number) {
+    if (item.quantity < item.product.stock) {
+      if (item.quantity === 1 && op === -1) {
+        return;
+      }
+      item.quantity += op;
+
+      this.cartService.changeCartQuantityEx(item.product, item.quantity);
+      this.doRender$.next();
+    }
+  }
+
+  removeFromCart(sku: number) {
+    this.cartService.removeFromCart(sku);
+    this.cart = this.cartService.cart;
+    this.doRender$.next();
+  }
+
+  getTotalItems() {
+    return this.cartService.getTotalItems();
+  }
+
+  getTotalPrice() {
+    return this.cartService.getTotalPrice().toFixed(2);
+  }
+
+  // giveRange(stock: number): number[] {
+  //   let range = [];
+  //   for (let i = 1; i < stock; i++) {
+  //     range.push(i);
+  //   }
+  //   console.log('IN give rnge' + range);
+
+  //   return range;
+  // }
+  private doRender$: Subject<void> = new Subject<void>();
+  doRender() {
+    this.cartService.doRender();
+    this.cart = this.cartService.cart;
+    console.log('IN cart comp');
+    console.log(this.cart);
+  }
+  checkout() {}
 }

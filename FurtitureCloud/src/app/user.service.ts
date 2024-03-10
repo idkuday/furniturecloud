@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, afterRender } from '@angular/core';
 import { take } from 'rxjs';
+import { AdminService } from './admin.service';
+import { LoginService } from './login.service';
 
 @Injectable({
   providedIn: 'root',
@@ -8,49 +10,46 @@ import { take } from 'rxjs';
 //Login Service will be separate
 export class UserService {
   enabled: boolean = false;
-  url: string = 'http://localhost:8000/admin/user/';
-  users: any[] = [];
-  constructor(private httpClient: HttpClient) {
+  url: string = 'http://localhost:8000/user/';
+  user: any;
+  constructor(
+    private httpClient: HttpClient,
+    private loginService: LoginService
+  ) {
     // afterRender(() => {
     //   this.checkAccess();
     // });
   }
-  checkAccess() {
-    let e = localStorage.getItem('FC_Admin');
-    if (!e) {
-      this.httpClient
-        .get('http://localhost:8000/admin')
-        .pipe(take(1))
-        .subscribe((d: any) => {
-          this.enabled = d.jwt === 'Admin Access';
-          localStorage.setItem('FC_Admin', JSON.stringify(this.enabled));
-          console.log(d);
-        });
-      return;
-    }
-    this.enabled = JSON.parse(e);
-  }
-  getUser(userId: string) {
-    let user: any;
-    return this.httpClient.get(this.url + 'get/' + userId);
-  }
+  // getUser(userId: string) {
+  //   let user: any;
+  //   return this.httpClient.get(this.url + 'get/' + userId);
+  // }
 
-  getAllUsers() {
-    return this.httpClient.get<any[]>(this.url + 'getAll');
-    // .subscribe((d) => this.users.push(...d));
-  }
+  // getAllUsers() {
+  //   return this.httpClient.get<any[]>(this.url + 'getAll');
+  //   // .subscribe((d) => this.users.push(...d));
+  // }
+  // setCart() {
+  //   this.user = this.loginService.user;
+  //   this.user.car
 
-  updateUser(user: any) {
-    return this.httpClient.put(this.url + 'update', user);
+  // }
+  reinitializeUser() {
+    return this.httpClient.get(this.url);
   }
-  createUser(user: any) {
-    return this.httpClient.put(this.url + 'create', user);
+  updateCart(cart: string) {
+    this.user = this.loginService.user;
+    this.user.cartData = cart;
+    return this.httpClient.put(this.url + 'update', this.user);
   }
-  deleteUser(userId: number) {
-    return this.httpClient
-      .delete(this.url + 'delete/' + userId)
-      .subscribe((d) => {
-        console.log('Delete User :' + d);
-      });
-  }
+  // createUser(user: any) {
+  //   return this.httpClient.put(this.url + 'create', user);
+  // }
+  // deleteUser(userId: number) {
+  //   return this.httpClient
+  //     .delete(this.url + 'delete/' + userId)
+  //     .subscribe((d) => {
+  //       console.log('Delete User :' + d);
+  //     });
+  // }
 }

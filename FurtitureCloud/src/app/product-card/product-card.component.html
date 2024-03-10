@@ -23,34 +23,19 @@
       </select>
     </mat-form-field>
     @if (isCart) {
-    <button
-      class="trash-button"
-      mat-fab
-      color="warn"
-      aria-label="delete icon button"
-    >
+    <button class="trash-button" mat-fab color="warn" aria-label="delete icon button">
       <mat-icon>delete</mat-icon>
     </button>
     } @else {
-      <div class="button-div">
-        <button
-        class="trash-button"
-        mat-fab
-        color="warn"
-        aria-label="plus icon button"
-      >
+    <div class="button-div">
+      <button class="trash-button" mat-fab color="warn" aria-label="plus icon button">
         <mat-icon>favorite</mat-icon>
-        </button>
-      <button
-        class="trash-button"
-        mat-fab
-        color="primary"
-        aria-label="plus icon button"
-      >
+      </button>
+      <button class="trash-button" mat-fab color="primary" aria-label="plus icon button">
         <mat-icon>add</mat-icon>
       </button>
-      </div>
-      
+    </div>
+
     }
   </div>
 </mat-card>

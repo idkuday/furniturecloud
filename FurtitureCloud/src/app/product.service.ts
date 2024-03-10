@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -7,6 +8,7 @@ import { Injectable } from '@angular/core';
 export class ProductService {
   url: string = 'http://localhost:8000/auth/product/';
   products: any[] = [];
+
   constructor(private httpClient: HttpClient) {}
 
   // getProduct(SKU: number): any {
