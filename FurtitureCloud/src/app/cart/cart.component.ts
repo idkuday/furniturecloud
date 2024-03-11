@@ -11,6 +11,7 @@ import { Subject } from 'rxjs';
 export class CartComponent implements OnInit {
   cart: { product: any; quantity: number }[] = [];
   imgUrl: any;
+  Orders: any[] = [];
 
   constructor(
     private cartService: CartService,
@@ -18,18 +19,24 @@ export class CartComponent implements OnInit {
   ) {
     afterRender(() => {
       this.doRender$.next();
+      this.cartService.getOrders();
     });
   }
 
   ngOnInit(): void {
     this.doRender$.subscribe(() => this.doRender());
+    this.cartService.lastOrder$.subscribe((d) => {
+      this.Orders = this.cartService.orders;
+      console.log(this.Orders);
+    });
   }
 
   changeQuantity(item: { product: any; quantity: number }, op: number) {
-    if (item.quantity < item.product.stock) {
+    if (item.quantity <= item.product.stock) {
       if (item.quantity === 1 && op === -1) {
         return;
       }
+      if (item.quantity == item.product.stock && op === 1) return;
       item.quantity += op;
 
       this.cartService.changeCartQuantityEx(item.product, item.quantity);
@@ -67,5 +74,7 @@ export class CartComponent implements OnInit {
     console.log('IN cart comp');
     console.log(this.cart);
   }
-  checkout() {}
+  checkout() {
+    this.cartService.placeOrder();
+  }
 }

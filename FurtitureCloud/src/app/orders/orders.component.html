@@ -1,0 +1,9 @@
+<div>
+    @for (order of orders; track orders) {
+    <div class="main">
+        <p>Order ID: {{order.id}}</p>
+        <p *ngFor="let item of order.cart">{{item}}</p>
+        <p style="font-weight: bold;">TOTAL PAID : ${{order.total}}</p>
+    </div>
+    }
+</div>

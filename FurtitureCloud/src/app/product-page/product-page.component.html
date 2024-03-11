@@ -1,7 +1,7 @@
 <button (click)="sortByName()" mat-raised-button>Sort By Name</button>
 <button (click)="sortByPrice()" mat-raised-button>Sort By Price</button>
-@for (item of items; track item) {
-    <app-product-card [item]="item" [isCart]="false"></app-product-card>
-}
-
-
+<div id="product-page">
+    @for (item of filteredProducts; track item) {
+    <app-product-card [item]="item" imgUrl="http://localhost:8000/product-images/{{item.sku}}.jpg"></app-product-card>
+    }
+</div>

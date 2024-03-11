@@ -1,0 +1,34 @@
+<div class="row">
+    <h2> Your Wishlist, </h2>
+
+    <div class="column">
+
+        @for (item of wishlist; track wishlist) {
+        <mat-card class="product-card">
+            <mat-card-header style="flex-direction: column">
+                <mat-card-title-group>
+                    <mat-card-title>{{ item.name }}</mat-card-title>
+                    <mat-card-subtitle>{{ item.category }}</mat-card-subtitle>
+                    <img mat-card-sm-image [src]="'http://localhost:8000/product-images/' + item.sku + '.jpg'" />
+                </mat-card-title-group>
+            </mat-card-header>
+            <mat-card-content>
+                <div style="font-size: larger; font-weight: bolder">${{ item.price }}</div>
+                <br />
+                <div style="font-size: smaller">{{ item.descr}}</div>
+            </mat-card-content>
+
+            <div class="quantity-area">
+
+                <button class="trash-button" mat-fab color="warn" (click)="removeFromWL(item.sku)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <button class="trash-button" mat-fab color="primary" (click)="moveToCart(item)">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+
+        </mat-card>
+        }
+    </div>
+</div>

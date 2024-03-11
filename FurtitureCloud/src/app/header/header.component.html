@@ -16,8 +16,8 @@
 
   <section class="main">
     <div id="searchdiv">
-      <form action="" id="search">
-        <input type="text" [placeholder]="placeholder" />
+      <form id="search" (ngSubmit)="search()" #searchForm="ngForm">
+        <input type="text" [(ngModel)]="searchText" name="searchInput" placeholder="Search" />
         <button mat-button>
           <img src="../assets/search.svg" alt="" />
         </button>
@@ -30,7 +30,7 @@
       <div *ngIf="isLoggedIn()" id="login" routerLink="./login">Logout <img src="../assets/login.svg" alt="" /></div>
       <div *ngIf="isAdmin()" id="login" routerLink="./admin">Admin <mat-icon>person</mat-icon>
       </div>
-      <div id="wishlist">
+      <div id="wishlist" routerLink="./wishlist">
         Wishlist <img src="../assets/wishlist.svg" alt="" />
       </div>
       <div routerLink="./cart" [matBadge]="cartLength" matBadgeOverlap="false" id="cart">

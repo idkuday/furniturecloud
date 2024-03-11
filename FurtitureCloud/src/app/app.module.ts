@@ -35,6 +35,14 @@ import { UserTableComponent } from './user-table/user-table.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SeatingComponent } from './seating/seating.component';
+import { HomeDecorComponent } from './home-decor/home-decor.component';
+import { LivingComponent } from './living/living.component';
+import { DiningComponent } from './dining/dining.component';
+import { KitchenComponent } from './kitchen/kitchen.component';
+import { FurnitureComponent } from './furniture/furniture.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
+import { OrdersComponent } from './orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +64,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UserTableComponent,
     ProductCardComponent,
     ProductPageComponent,
+    SeatingComponent,
+    HomeDecorComponent,
+    LivingComponent,
+    DiningComponent,
+    KitchenComponent,
+    FurnitureComponent,
+    WishlistComponent,
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,

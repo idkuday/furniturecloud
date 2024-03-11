@@ -1,0 +1,12 @@
+.main{
+    border: solid;
+    border-width: 3px;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin:auto;
+    margin-bottom:1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+}

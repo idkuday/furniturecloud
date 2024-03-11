@@ -7,33 +7,16 @@ import { LoginService } from './login.service';
 @Injectable({
   providedIn: 'root',
 })
-//Login Service will be separate
 export class UserService {
   enabled: boolean = false;
   url: string = 'http://localhost:8000/user/';
+  orderUrl: string = 'http://localhost:8000/orders/';
   user: any;
   constructor(
     private httpClient: HttpClient,
     private loginService: LoginService
-  ) {
-    // afterRender(() => {
-    //   this.checkAccess();
-    // });
-  }
-  // getUser(userId: string) {
-  //   let user: any;
-  //   return this.httpClient.get(this.url + 'get/' + userId);
-  // }
+  ) {}
 
-  // getAllUsers() {
-  //   return this.httpClient.get<any[]>(this.url + 'getAll');
-  //   // .subscribe((d) => this.users.push(...d));
-  // }
-  // setCart() {
-  //   this.user = this.loginService.user;
-  //   this.user.car
-
-  // }
   reinitializeUser() {
     return this.httpClient.get(this.url);
   }
@@ -42,14 +25,18 @@ export class UserService {
     this.user.cartData = cart;
     return this.httpClient.put(this.url + 'update', this.user);
   }
-  // createUser(user: any) {
-  //   return this.httpClient.put(this.url + 'create', user);
-  // }
-  // deleteUser(userId: number) {
-  //   return this.httpClient
-  //     .delete(this.url + 'delete/' + userId)
-  //     .subscribe((d) => {
-  //       console.log('Delete User :' + d);
-  //     });
-  // }
+  updateWishlist(wishlist: string) {
+    this.user = this.loginService.user;
+    this.user.wishListData = wishlist;
+    return this.httpClient.put(this.url + 'update', this.user);
+  }
+
+  placeOrder() {
+    return this.httpClient.post(this.orderUrl + 'create', {
+      cart: this.user.cartData,
+    });
+  }
+  getOrders(user_id: number) {
+    return this.httpClient.get(this.orderUrl + 'getAll/User/' + user_id);
+  }
 }

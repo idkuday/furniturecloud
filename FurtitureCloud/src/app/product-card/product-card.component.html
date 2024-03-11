@@ -4,38 +4,39 @@
       <mat-card-title>{{ item.name }}</mat-card-title>
       <mat-card-subtitle>{{ item.category }}</mat-card-subtitle>
 
-      <img mat-card-sm-image src="{{ imgUrl }}" />
+
     </mat-card-title-group>
+    <img mat-card-lg-image src="{{ imgUrl }}" />
   </mat-card-header>
+
   <mat-card-content>
     <div style="font-size: larger; font-weight: bolder">${{ item.price }}</div>
     <br />
-    <div style="font-size: smaller">{{ item.description }}</div>
+    <div style="font-size: smaller">{{ item.descr }}</div>
+
   </mat-card-content>
 
   <div class="quantity-area">
-    <mat-form-field class="quantity-select">
-      <mat-label>Quantity</mat-label>
-      <select matNativeControl required>
-        @for (i of giveRange(item.stock); track i) {
-        <option value="{{ i }}">{{ i }}</option>
-        }
-      </select>
-    </mat-form-field>
-    @if (isCart) {
-    <button class="trash-button" mat-fab color="warn" aria-label="delete icon button">
-      <mat-icon>delete</mat-icon>
-    </button>
-    } @else {
+    <div class="quantity">
+
+      <section *ngIf="quantity!==0"
+        style="margin-right: 1rem;font-weight: bold;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+        Quantity: {{quantity}}</section>
+
+    </div>
+
     <div class="button-div">
-      <button class="trash-button" mat-fab color="warn" aria-label="plus icon button">
+      <button *ngIf="wl" (click)="removeFromWishList(item)" class="trash-button" mat-fab color="warn">
         <mat-icon>favorite</mat-icon>
       </button>
-      <button class="trash-button" mat-fab color="primary" aria-label="plus icon button">
+      <button *ngIf="!wl" (click)="addToWishList(item)" class="trash-button" mat-fab color="">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button (click)="changeQuantity()" class="trash-button" mat-fab color="primary">
         <mat-icon>add</mat-icon>
       </button>
     </div>
 
-    }
+
   </div>
 </mat-card>

@@ -65,8 +65,6 @@ export class LoginService {
   }
 
   saveState() {
-    this.adminService.checkAccess();
-
     localStorage.setItem('FC_user', JSON.stringify(this.user));
     localStorage.setItem('FC_loggedin', JSON.stringify(this.loggedIn));
   }

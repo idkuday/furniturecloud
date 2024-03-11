@@ -10,12 +10,25 @@ import { LoginService } from './login.service';
 export class CartService {
   cart: { product: any; quantity: number }[] = [];
   size: number = this.cart.length;
+  orders: any[] = [];
+  wishlist: any[] = [];
+  loadedCart$: Subject<void> = new Subject<void>();
+  lastOrder$: Subject<any> = new Subject<any>();
+
   constructor(
     private productService: ProductService,
     private user: UserService,
     private login: LoginService
   ) {
     afterRender(() => this.doRender$.next());
+  }
+
+  getQuantity(sku: number): number {
+    const index = this.cart.findIndex((item) => item.product.sku === sku);
+    if (index === -1) return 0;
+    else {
+      return this.cart[index].quantity;
+    }
   }
 
   changeCartQuantity(product: any, quantity: number) {
@@ -70,14 +83,42 @@ export class CartService {
       .updateCart(this.toData())
       .pipe(take(1))
       .subscribe((d) => {
-        console.log('Update user::::');
-
+        this.lastOrder$.next(d);
         this.login.user = d;
         this.login.saveState();
-        console.log(this.login.user);
+
         this.doRender$.next();
       });
   }
+  placeOrder() {
+    this.user
+      .placeOrder()
+      .pipe(take(1))
+      .subscribe((d) => {
+        this.lastOrder$.next(d);
+        this.clearCart();
+        this.user
+          .updateCart('')
+          .pipe(take(1))
+          .subscribe((e) => {
+            this.login.user = e;
+            this.login.saveState();
+
+            this.doRender$.next();
+          });
+      });
+  }
+  getOrders() {
+    this.user.user = this.login.user;
+    this.user
+      .getOrders(this.user.user.user_id)
+      .pipe(take(1))
+      .subscribe((d: any) => {
+        console.log(d);
+        this.parseOrder(d);
+      });
+  }
+
   parseCart(data: string): void {
     this.clearCart(); // Clear existing cart before parsing new data
     const dataArray: string[] = data.split(',');
@@ -90,48 +131,74 @@ export class CartService {
         this.changeCartQuantity(product, quantity);
       }
     });
-    console.log(this.cart);
     this.size = this.cart.length;
   }
   private doRender$: Subject<void> = new Subject<void>();
   doRender() {
     this.user.user = this.login.user;
-
+    this.parseWishlist(this.user.user.wishListData);
     this.parseCart(this.user.user.cartData);
-    console.log('DORENDER CS' + this.user.user.cartData);
-    console.log(this.login.user);
+  }
+  parseOrder(orders: any[]): void {
+    let cart: any[] = [];
+    let total: number = 0;
+    for (let order of orders) {
+      const dataArray: string[] = order.cart.split(',');
+      total = 0;
+      cart = [];
+      dataArray.forEach((item) => {
+        const [skuStr, quantityStr] = item.split(' ');
+        const sku = Number(skuStr);
+        const quantity = Number(quantityStr);
+        const product = this.productService.products.find((p) => p.sku === sku);
+        if (product) {
+          cart.push(`${product.name} : ${quantity} ---- $${product.price}`);
+          total += product.price;
+        }
+      });
+      order.cart = cart;
+      order.total = total.toFixed(2);
+    }
+    this.lastOrder$.next(orders);
+    this.orders = orders;
+  }
+  parseWishlist(data: string): void {
+    this.wishlist = [];
+    const dataArray: string[] = data.split(',');
+    dataArray.forEach((item) => {
+      const sku = Number(item);
+      const product = this.productService.products.find((p) => p.sku === sku);
+      if (product) {
+        this.wishlist.push(product);
+      }
+    });
+  }
+  addToWL(product: any) {
+    if (this.existsInWL(product.sku)) {
+      return;
+    }
+    this.wishlist.push(product);
+    this.updateUserWishList();
+  }
+  existsInWL(sku: number): boolean {
+    return this.wishlist.findIndex((item) => item.sku === sku) !== -1;
+  }
+  removeFromWL(sku: number) {
+    this.wishlist = this.wishlist.filter((item: any) => item.sku !== sku);
+    this.updateUserWishList();
+  }
+  updateUserWishList() {
+    this.user
+      .updateWishlist(this.wishListToData())
+      .pipe(take(1))
+      .subscribe((d) => {
+        this.login.user = d;
+        this.login.saveState();
+
+        this.doRender$.next();
+      });
+  }
+  wishListToData() {
+    return this.wishlist.map((item: any) => `${item.sku}`).join(',');
   }
 }
-// export class CartService {
-//   cart = new Map<number, number>();
-
-//   changeCartQuantity(sku: number, quantity: number) {
-//     this.cart.set(sku, quantity);
-//   }
-//   removeFromCart(sku: number) {
-//     this.cart.delete(sku);
-//   }
-//   //ToData
-//   toData(): string {
-//     let data: string = '';
-//     for (const id of this.cart.keys()) {
-//       data += id + ' ' + this.cart.get(id) + ',';
-//     }
-//     return data;
-//   }
-
-//   //ParseCart
-//   parseCart(data: string): void {
-//     const dataArray: string[] = data.split(',');
-//     for (const item of dataArray) {
-//       const arr: string[] = item.split(' ');
-//       this.cart.set(Number(arr[0]), Number(arr[1]));
-//     }
-//   }
-//   // Method to get the size of the map
-//   size(): number {
-//     return this.cart.size;
-//   }
-
-//   constructor() {}
-// }
