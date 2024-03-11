@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { slideInAnimation } from './animations';
+import { RouterOutlet } from '@angular/router';
 // import { ProductService } from './product.service';
 // import { provideHttpClient, withFetch } from '@angular/common/http';
 // import { UserService } from './user.service';
@@ -10,6 +12,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
+  animations: [slideInAnimation],
 })
 export class AppComponent {
   addToCart() {
@@ -17,6 +20,9 @@ export class AppComponent {
   }
   placeholder: string = 'Search';
   cartLength: number = 0;
+  getRouterOutletState(outlet: RouterOutlet) {
+    return outlet.isActivated ? outlet.activatedRoute : '';
+  }
   // items: any[];
 
   // categories: any[] = [["LivingRoom", "../assets/LivingRoom.jpg"], ["Lighting", "../assets/Lighting.jpg"],
