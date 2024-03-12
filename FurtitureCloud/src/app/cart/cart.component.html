@@ -38,9 +38,15 @@
   </div>
   <div class="column order-div">
     <h2> Order Details </h2>
+    <form>
+      <input type="text" placeholder="Coupoun Code" name="Disc" [(ngModel)]="coupon">
+      <button mat-button color="primary" (click)="applyDiscount()">Apply Coupon</button>
+    </form>
+    <div *ngIf="discountApplied">
+      {{percent}}% Discount Applied!!
+    </div>
 
-    <button mat-button color="primary">Apply Coupon</button>
-    <p>Your discount is 10%</p>
+    <!-- <p>{{}}</p> -->
 
     <mat-card>
       <mat-card-content>
@@ -51,15 +57,16 @@
         <div class="row">
           <div class="column"> Cart Total Price </div>
           <div class="column">${{getTotalPrice()}} </div>
+          <div *ngIf="discountApplied" class="column"> Discount</div>
+          <div *ngIf="discountApplied" class="column">-${{getTotalDiscounted()}} </div>
+          <div *ngIf="discountApplied" class="column"> Discounted Total</div>
+          <div *ngIf="discountApplied" class="column">${{getTotalDiscountedPrice()}} </div>
         </div>
+
 
       </mat-card-content>
       <button mat-raised-button style="background-color: greenyellow;" (click)="checkout()">Checkout</button>
     </mat-card>
-    <div class="row">
-      <div class="column"> You Last Order </div>
-      <!-- <div class="column"> {{Orders[0].id}} - {{Orders[0].cart}}</div> -->
-    </div>
 
   </div>
 </div>

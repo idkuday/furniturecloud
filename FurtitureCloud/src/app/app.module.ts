@@ -43,6 +43,7 @@ import { KitchenComponent } from './kitchen/kitchen.component';
 import { FurnitureComponent } from './furniture/furniture.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { OrdersComponent } from './orders/orders.component';
+import { ReportsComponent } from './reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { OrdersComponent } from './orders/orders.component';
     FurnitureComponent,
     WishlistComponent,
     OrdersComponent,
+    ReportsComponent,
   ],
   imports: [
     BrowserModule,

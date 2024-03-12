@@ -17,6 +17,7 @@ import { LivingComponent } from './living/living.component';
 import { FurnitureComponent } from './furniture/furniture.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { OrdersComponent } from './orders/orders.component';
+import { ReportsComponent } from './reports/reports.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -44,6 +45,7 @@ const routes: Routes = [
   { path: 'register', component: RegFormComponent },
   { path: 'wishlist', component: WishlistComponent },
   { path: 'orders', component: OrdersComponent },
+  { path: 'reports', component: ReportsComponent },
 ];
 
 @NgModule({

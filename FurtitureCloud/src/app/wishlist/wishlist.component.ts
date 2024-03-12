@@ -1,4 +1,4 @@
-import { Component, afterRender } from '@angular/core';
+import { ChangeDetectorRef, Component, afterRender } from '@angular/core';
 import { Subject } from 'rxjs';
 import { CartService } from '../cart.service';
 import { ProductService } from '../product.service';
@@ -13,7 +13,8 @@ export class WishlistComponent {
 
   constructor(
     private cartService: CartService,
-    private productService: ProductService // Inject ProductService
+    private productService: ProductService, // Inject ProductService
+    private ref: ChangeDetectorRef
   ) {
     afterRender(() => {
       this.doRender$.next();
@@ -24,6 +25,7 @@ export class WishlistComponent {
     this.doRender$.subscribe(() => this.doRender());
     this.cartService.loadedCart$.subscribe(() => {
       this.wishlist = this.cartService.wishlist;
+      this.ref.detectChanges();
     });
   }
   moveToCart(item: any) {
@@ -33,7 +35,9 @@ export class WishlistComponent {
   }
   removeFromWL(sku: number) {
     this.cartService.removeFromWL(sku);
-    this.wishlist = this.cartService.wishlist;
+
+    this.wishlist = this.wishlist.filter((item) => item.sku !== sku);
+    window.location.reload();
     this.doRender$.next();
   }
 
@@ -42,5 +46,6 @@ export class WishlistComponent {
     this.cartService.doRender();
     this.wishlist = this.cartService.wishlist;
     console.log(this.wishlist);
+    this.ref.detectChanges();
   }
 }

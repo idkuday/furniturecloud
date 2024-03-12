@@ -114,7 +114,6 @@ export class CartService {
       .getOrders(this.user.user.user_id)
       .pipe(take(1))
       .subscribe((d: any) => {
-        console.log(d);
         this.parseOrder(d);
       });
   }
@@ -152,7 +151,7 @@ export class CartService {
         const quantity = Number(quantityStr);
         const product = this.productService.products.find((p) => p.sku === sku);
         if (product) {
-          cart.push(`${product.name} : ${quantity} ---- $${product.price}`);
+          cart.push({ product, quantity });
           total += product.price;
         }
       });
@@ -164,6 +163,9 @@ export class CartService {
   }
   parseWishlist(data: string): void {
     this.wishlist = [];
+    if (!data) {
+      return;
+    }
     const dataArray: string[] = data.split(',');
     dataArray.forEach((item) => {
       const sku = Number(item);
@@ -181,6 +183,9 @@ export class CartService {
     this.updateUserWishList();
   }
   existsInWL(sku: number): boolean {
+    if (this.wishlist.length === 0) {
+      return false;
+    }
     return this.wishlist.findIndex((item) => item.sku === sku) !== -1;
   }
   removeFromWL(sku: number) {

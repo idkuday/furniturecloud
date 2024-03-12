@@ -1,0 +1,63 @@
+<div *ngIf="this.enabled">
+    <div class="form-div">
+        <h3>Choose Order Window</h3>
+        <form>
+            <label for="start">Start: </label>
+            <input type="datetime-local" name="start" [(ngModel)]="startTime"><br><br /><br />
+
+            <label for="name">End: </label>
+            <input type="datetime-local" name="end" [(ngModel)]="endTime"><br /><br />
+            <button (click)="getOrders()" mat-raised-button color="accent">Get Orders</button>
+
+        </form>
+    </div>
+
+    <div>
+        <h1 style="margin:2rem">Order Report:</h1>
+        @for (order of orders; track order) {
+        <div class="order">
+            <p>Order ID: {{order.id}}</p>
+            <p>User : {{order.user.email}}</p>
+            <!-- <div class="main">
+        
+        <p *ngFor="let item of order.cart">{{item}}</p>
+        <p style="font-weight: bold;">TOTAL PAID : ${{order.total}}</p>
+    </div> -->
+            @for (item of order.cart; track item) {
+            <mat-card class="product-card">
+                <mat-card-header style="flex-direction: column">
+                    <mat-card-title-group>
+                        <mat-card-title>{{ item.product.name }}</mat-card-title>
+                        <mat-card-subtitle>{{ item.product.category }}</mat-card-subtitle>
+                        <img mat-card-sm-image
+                            [src]="'http://localhost:8000/product-images/' + item.product.sku + '.jpg'" />
+                    </mat-card-title-group>
+                </mat-card-header>
+                <mat-card-content>
+                    <div style="font-size: larger; font-weight: bolder">${{ item.product.price }}</div>
+                    <br />
+                    <div style="font-size: smaller">{{ item.product.descr}}</div>
+                </mat-card-content>
+
+                <div class="quantity-area">
+
+                    <div class="quantity">
+                        <section
+                            style="margin-right: 1rem;font-weight: bold;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+                            Quantity :</section>
+
+                        <div>{{item.quantity}}</div>
+
+                    </div>
+
+                </div>
+
+            </mat-card>
+            }
+            <section
+                style="margin-right: 1rem;font-weight: bold;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+                TOTAL PAID : ${{order.total}}</section>
+        </div>
+        }
+    </div>
+</div>

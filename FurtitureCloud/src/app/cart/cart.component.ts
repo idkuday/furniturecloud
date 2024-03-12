@@ -1,7 +1,9 @@
 import { Component, OnInit, afterRender } from '@angular/core';
 import { CartService } from '../cart.service';
 import { ProductService } from '../product.service';
-import { Subject } from 'rxjs';
+import { Subject, take } from 'rxjs';
+import { MicroservicesService } from '../microservices.service';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-cart',
@@ -12,10 +14,14 @@ export class CartComponent implements OnInit {
   cart: { product: any; quantity: number }[] = [];
   imgUrl: any;
   Orders: any[] = [];
+  coupon: string = '';
+  percent: any;
 
   constructor(
     private cartService: CartService,
-    private productService: ProductService // Inject ProductService
+    private productService: ProductService, // Inject ProductService
+    private discount: MicroservicesService,
+    private login: LoginService
   ) {
     afterRender(() => {
       this.doRender$.next();
@@ -27,7 +33,6 @@ export class CartComponent implements OnInit {
     this.doRender$.subscribe(() => this.doRender());
     this.cartService.lastOrder$.subscribe((d) => {
       this.Orders = this.cartService.orders;
-      console.log(this.Orders);
     });
   }
 
@@ -57,6 +62,15 @@ export class CartComponent implements OnInit {
   getTotalPrice() {
     return this.cartService.getTotalPrice().toFixed(2);
   }
+  getTotalDiscounted() {
+    return (this.cartService.getTotalPrice() * (this.percent / 100)).toFixed(2);
+  }
+  getTotalDiscountedPrice() {
+    return (
+      this.cartService.getTotalPrice() *
+      ((100 - this.percent) / 100)
+    ).toFixed(2);
+  }
 
   // giveRange(stock: number): number[] {
   //   let range = [];
@@ -71,10 +85,27 @@ export class CartComponent implements OnInit {
   doRender() {
     this.cartService.doRender();
     this.cart = this.cartService.cart;
-    console.log('IN cart comp');
-    console.log(this.cart);
   }
   checkout() {
     this.cartService.placeOrder();
+    this.discountApplied = false;
+    alert(
+      'Order Placed, Payment Received : $' + this.getTotalDiscountedPrice()
+    );
+    window.location.reload();
+  }
+  discountApplied: boolean = false;
+  applyDiscount() {
+    this.discount
+      .getDiscount(this.coupon, this.login.user.user_id)
+      .pipe(take(1))
+      .subscribe((d: any) => {
+        if (d.valid) {
+          this.discountApplied = true;
+          this.percent = d.discount.percent;
+        } else {
+          this.discountApplied = false;
+        }
+      });
   }
 }

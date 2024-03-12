@@ -1,15 +1,17 @@
-.main{
-    border: solid rgba(0, 0, 0, 0.5);;
+.main {
+    border: solid rgba(0, 0, 0, 0.5);
+    ;
     border-width: 3px;
     align-self: center;
     display: flex;
     flex-direction: column;
     width: fit-content;
-    margin:auto;
-    margin-bottom:1rem;
+    margin: auto;
+    margin-bottom: 1rem;
     padding: 1rem;
     border-radius: 1rem;
 }
+
 .column {
     float: left;
     width: 50%;
@@ -121,13 +123,107 @@ input {
     background-color: bisque;
     color: black;
 }
-.order{
-    border:solid rgba(0, 0, 0, 0.5);
-    border-width:3px;
+
+.order {
+    border: solid rgba(0, 0, 0, 0.5);
+    border-width: 3px;
     border-radius: 2rem;
-    width:90%;
-    padding:1rem;
+    width: 90%;
+    padding: 1rem;
     align-self: center;
-    margin:auto;
+    margin: auto;
     margin-bottom: 2rem;
+}
+th,
+td {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px solid black;
+    text-align: center;
+    vertical-align: middle;
+    margin: 1em;
+}
+
+thead th {
+    width: 25%;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+thead {
+    background-color: #333;
+    color: white;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 2%;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #eee;
+}
+
+tbody th {
+    background-color: rgb(207, 134, 39);
+    color: #fff;
+    text-align: left;
+}
+
+tbody tr:nth-child(even) th {
+    background-color: rgb(222, 167, 64);
+}
+
+label {
+    display: inline-block;
+    width: 140px;
+    text-align: left;
+}
+
+​ .form-div {
+    margin: auto;
+    padding: 1em;
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    background-color: white;
+    box-sizing: border-box;
+
+}
+
+.form-div h3 {
+    margin-left: 2em;
+}
+
+form {
+    margin-left: 2em;
+    width: fit-content;
+    padding: 1em;
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    background-color: white;
+    margin-bottom: 1em;
+    border-radius: 15px;
+}
+
+form button {
+    margin-right: 0.25em
+}
+
+tbody :hover {
+    opacity: 0.8;
+}
+
+.selected {
+    border: solid;
+    border-color: rgb(0, 255, 55);
 }

@@ -27,8 +27,8 @@
     <div routerLink="./" class="title">| Furniture Cloud |</div>
     <div class="icons">
       <div *ngIf="!isLoggedIn()" id="login" routerLink="./login">Login <img src="../assets/login.svg" alt="" /></div>
-      <div *ngIf="isLoggedIn()" id="login" routerLink="./login">Logout <img src="../assets/login.svg" alt="" /></div>
-      <div *ngIf="isAdmin()" id="login" routerLink="./admin">Admin <mat-icon>person</mat-icon>
+      <div *ngIf="isLoggedIn()" id="login" routerLink="./login">Profile<mat-icon>person</mat-icon></div>
+      <div *ngIf="isAdmin()" id="login" routerLink="./admin">Admin Unit<mat-icon>lock open</mat-icon>
       </div>
       <div id="wishlist" routerLink="./wishlist">
         Wishlist <img src="../assets/wishlist.svg" alt="" />

@@ -1,6 +1,7 @@
 import { Component, OnInit, afterRender } from '@angular/core';
 import { AdminService } from '../admin.service';
 import { Subject, take } from 'rxjs';
+import { MicroservicesService } from '../microservices.service';
 
 export interface User {
   user_id: number;
@@ -32,10 +33,10 @@ export class UserTableComponent implements OnInit {
   users: any[] = [];
   shouldChange: boolean = true;
   selected: any = null;
-  defaultFormInputs = ['', '', '', '', '', '', ''];
+  defaultFormInputs = ['', '', '', '', '', '', '', '', '', ''];
 
   clearAll() {
-    this.defaultFormInputs = ['', '', '', '', '', '', ''];
+    this.defaultFormInputs = ['', '', '', '', '', '', '', '', '', ''];
     if (this.prevelement) this.prevelement?.classList.remove('selected');
   }
 
@@ -73,7 +74,10 @@ export class UserTableComponent implements OnInit {
     };
     if (user.user_id == '') {
       this.adminService
-        .createUser(user, '1234')
+        .createUser(
+          user,
+          this.defaultFormInputs[7] ? this.defaultFormInputs[7] : '1234'
+        )
         .pipe(take(1))
         .subscribe((d) => {
           user = d;
@@ -82,14 +86,44 @@ export class UserTableComponent implements OnInit {
     } else {
       console.log(this.selected);
 
-      this.adminService.updateUser(user, '-1').subscribe((d) => {
-        this.doRender$.next();
-        console.log(d);
-      });
+      this.adminService
+        .updateUser(
+          user,
+          this.defaultFormInputs[7] ? this.defaultFormInputs[7] : '-1'
+        )
+        .subscribe((d) => {
+          this.doRender$.next();
+          console.log(d);
+        });
     }
   }
+  success = 0;
+  discount: any;
+  setDiscount() {
+    this.disc
+      .setDiscount(
+        {
+          code: this.defaultFormInputs[8],
+          percent: Number(this.defaultFormInputs[9]),
+        },
+        Number(this.defaultFormInputs[0])
+      )
+      .pipe(take(1))
+      .subscribe((d: any) => {
+        console.log(d);
+        if (d) {
+          this.discount = d;
+          this.success = 1;
+        } else {
+          this.success = 2;
+        }
+      });
+  }
 
-  constructor(private adminService: AdminService) {}
+  constructor(
+    private adminService: AdminService,
+    private disc: MicroservicesService
+  ) {}
 
   ngOnInit(): void {
     this.doRender$.subscribe(() => this.doRender());

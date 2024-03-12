@@ -32,7 +32,11 @@
 </div>
 <div *ngIf="isLoggedIn()">
     <div class="row">
-        <p>Logged in as {{user.firstName}}</p>
+        <p style="font-weight: bold;">Logged in as {{user.firstName}}</p>
+        <p>Email: {{user.email}}</p>
+        <p>Name: {{user.firstName}} {{user.lastName}}</p>
+        <button style="margin :1rem" mat-fab color="primary" type="submit" (click)="goToOrders()">Orders</button>
         <button color="warn" type="submit" mat-raised-button (click)="logout()">Logout</button>
     </div>
+
 </div>

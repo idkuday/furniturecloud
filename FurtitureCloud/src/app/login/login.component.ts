@@ -3,6 +3,7 @@ import { LoginService } from '../login.service';
 import { UserService } from '../user.service';
 import { AdminService } from '../admin.service';
 import { CartService } from '../cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,9 @@ import { CartService } from '../cart.service';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
+  goToOrders() {
+    this.router.navigate(['/orders']).then(() => window.location.reload());
+  }
   logout() {
     this.loginservice.logout();
     this.user = undefined;
@@ -51,6 +55,7 @@ export class LoginComponent {
     private loginservice: LoginService,
     private userService: UserService,
     private adminService: AdminService,
-    private cart: CartService
+    private cart: CartService,
+    private router: Router
   ) {}
 }
