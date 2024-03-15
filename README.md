@@ -19,7 +19,8 @@ This project is an ecommerce platform tailored for furniture enthusiasts, offeri
 **Discounts and Promotions:** Users can apply discount codes during checkout for special offers. Admins can manage discounts for specific users.
 
 **Admin Panel:** Admins have access to features such as user and product management, order tracking, and setting discounts.
-Technical Details:
+
+## Technical Details:
 
 **Backend Infrastructure:** The backend is powered by Spring Boot, with a main application service and two microservices (reports and discount services). A service registry and API gateway facilitate seamless communication between services.
 
