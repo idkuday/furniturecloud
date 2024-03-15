@@ -42,6 +42,19 @@ export class AdminService {
     return this.httpClient.get<any[]>(this.url + 'getAll');
     // .subscribe((d) => this.users.push(...d));
   }
+  getAllProducts(category = 'none', sort: string) {
+    //Category based query else all products are queried
+    // represents products
+    if (category === 'none') {
+      return this.httpClient.get<any[]>(
+        'http://localhost:8000/admin/' + 'getAll/none/none/' + sort
+      );
+    } else {
+      return this.httpClient.get<any[]>(
+        this.url + 'getAll/Category/' + category + '/' + sort
+      );
+    }
+  }
 
   updateUser(user: any, password: string) {
     return this.httpClient.put(this.url + 'update/' + password, user);

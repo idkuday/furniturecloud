@@ -74,9 +74,11 @@ export class CartService {
   }
 
   toData(): string {
-    return this.cart
-      .map((item) => `${item.product.sku} ${item.quantity}`)
-      .join(',');
+    return (
+      this.cart
+        .map((item) => `${item.product.sku} ${item.quantity}`)
+        .join(',') + ''
+    );
   }
   updateUser() {
     this.user
@@ -90,27 +92,12 @@ export class CartService {
         this.doRender$.next();
       });
   }
-  placeOrder() {
-    this.user
-      .placeOrder()
-      .pipe(take(1))
-      .subscribe((d) => {
-        this.lastOrder$.next(d);
-        this.clearCart();
-        this.user
-          .updateCart('')
-          .pipe(take(1))
-          .subscribe((e) => {
-            this.login.user = e;
-            this.login.saveState();
-
-            this.doRender$.next();
-          });
-      });
+  placeOrder(total: string) {
+    return this.user.placeOrder(total);
   }
   getOrders() {
     this.user.user = this.login.user;
-    this.user
+    return this.user
       .getOrders(this.user.user.user_id)
       .pipe(take(1))
       .subscribe((d: any) => {
@@ -140,10 +127,11 @@ export class CartService {
   }
   parseOrder(orders: any[]): void {
     let cart: any[] = [];
-    let total: number = 0;
+
     for (let order of orders) {
-      const dataArray: string[] = order.cart.split(',');
-      total = 0;
+      const [tempCart, totalDisc] = order.cart.split(':');
+      const dataArray: string[] = tempCart.split(',');
+
       cart = [];
       dataArray.forEach((item) => {
         const [skuStr, quantityStr] = item.split(' ');
@@ -152,11 +140,10 @@ export class CartService {
         const product = this.productService.products.find((p) => p.sku === sku);
         if (product) {
           cart.push({ product, quantity });
-          total += product.price;
         }
       });
       order.cart = cart;
-      order.total = total.toFixed(2);
+      order.total = totalDisc;
     }
     this.lastOrder$.next(orders);
     this.orders = orders;

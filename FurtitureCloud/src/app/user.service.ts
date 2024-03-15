@@ -31,9 +31,9 @@ export class UserService {
     return this.httpClient.put(this.url + 'update', this.user);
   }
 
-  placeOrder() {
+  placeOrder(total: string) {
     return this.httpClient.post(this.orderUrl + 'create', {
-      cart: this.user.cartData,
+      cart: this.user.cartData + total,
     });
   }
   getOrders(user_id: number) {

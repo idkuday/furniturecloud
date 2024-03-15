@@ -20,10 +20,7 @@ export interface Product {
 export class ProductTableComponent implements OnInit {
   private doRender$: Subject<void> = new Subject<void>();
   prevelement: any;
-  constructor(
-    private productService: ProductService,
-    private adminService: AdminService
-  ) {}
+  constructor(private adminService: AdminService) {}
   ngOnInit(): void {
     this.doRender$.subscribe(() => this.doRender());
     this.doRender$.next();
@@ -39,10 +36,9 @@ export class ProductTableComponent implements OnInit {
     'price',
   ];
   doRender() {
-    this.productService.getAllProducts('none', 'none').subscribe({
+    this.adminService.getAllProducts('none', 'none').subscribe({
       next: (p) => {
         this.items = p;
-        this.productService.products = p;
       },
       complete: () => {
         console.log('completed');

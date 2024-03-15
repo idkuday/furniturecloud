@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: Furniture-Cloud
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3307/furniturecloud
+    username: root
+    password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+server:
+  port: 8003
+
+product:
+  images:
+    directory: C:/Users/udayr/eclipse-workspace2/Capstone/CogentProject/Furniture-Cloud/src/main/resources/Product_Images
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+logging:
+  level:
+    root: DEBUG

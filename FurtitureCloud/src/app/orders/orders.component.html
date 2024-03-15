@@ -1,14 +1,8 @@
 <div>
     <h1 style="margin:2rem">Your Previous Orders</h1>
-    @for (order of orders; track orders) {
+    @for (order of orders; track order) {
     <div class="order">
         <p>Order ID: {{order.id}}</p>
-
-        <!-- <div class="main">
-        
-        <p *ngFor="let item of order.cart">{{item}}</p>
-        <p style="font-weight: bold;">TOTAL PAID : ${{order.total}}</p>
-    </div> -->
         @for (item of order.cart; track item) {
         <mat-card class="product-card">
             <mat-card-header style="flex-direction: column">
@@ -42,7 +36,8 @@
         }
         <section
             style="margin-right: 1rem;font-weight: bold;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
-            TOTAL PAID : ${{order.total}}</section>
+            TOTAL Paid: ${{order.total}}</section>
+
     </div>
     }
 </div>

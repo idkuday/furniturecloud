@@ -4,6 +4,7 @@ import { ProductService } from '../product.service';
 import { Subject, take } from 'rxjs';
 import { MicroservicesService } from '../microservices.service';
 import { LoginService } from '../login.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-cart',
@@ -21,7 +22,8 @@ export class CartComponent implements OnInit {
     private cartService: CartService,
     private productService: ProductService, // Inject ProductService
     private discount: MicroservicesService,
-    private login: LoginService
+    private login: LoginService,
+    private user: UserService
   ) {
     afterRender(() => {
       this.doRender$.next();
@@ -87,12 +89,35 @@ export class CartComponent implements OnInit {
     this.cart = this.cartService.cart;
   }
   checkout() {
-    this.cartService.placeOrder();
+    let discount = this.discountApplied
+      ? this.getTotalDiscountedPrice()
+      : this.getTotalPrice();
+    if (!this.login.loggedIn) {
+      alert('Please Login to place Orders');
+    }
+    if (this.cart.length == 0) {
+      alert('Cart is empty!');
+    }
+    this.cartService
+      .placeOrder(':' + discount)
+      .pipe(take(1))
+      .subscribe((d) => {
+        this.cartService.clearCart();
+        console.log(d);
+
+        this.user
+          .updateCart('')
+          .pipe(take(1))
+          .subscribe((e) => {
+            this.login.user = e;
+            this.login.saveState();
+
+            this.doRender$.next();
+          });
+      });
     this.discountApplied = false;
-    alert(
-      'Order Placed, Payment Received : $' + this.getTotalDiscountedPrice()
-    );
-    window.location.reload();
+    alert('Order Placed, Payment Received : $' + discount);
+    // window.location.reload();
   }
   discountApplied: boolean = false;
   applyDiscount() {

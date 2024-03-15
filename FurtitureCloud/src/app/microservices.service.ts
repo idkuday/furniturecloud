@@ -19,8 +19,8 @@ export class MicroservicesService {
       this.enabled = this.admin.enabled;
     });
   }
-  urlReports = 'http://localhost:8001/reports/between-times';
-  urlDiscounts = 'http://localhost:8080/Discounts/';
+  urlReports = 'http://localhost:8000/reports/between-times';
+  urlDiscounts = 'http://localhost:8000/Discounts/';
   getOrders(start: string, end: string) {
     let params = new HttpParams().set('startTime', start).set('endTime', end);
     return this.httpClient.get(this.urlReports, { params: params });
