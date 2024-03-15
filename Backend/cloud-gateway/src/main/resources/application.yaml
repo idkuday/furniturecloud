@@ -1,0 +1,48 @@
+server: 
+ port: 8000
+
+spring:
+  application:
+    name: FurnitureCloud-GATEWAY
+
+  cloud:      
+    gateway:
+      default-filters:
+      - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+#      - AddResponseHeader=Access-Control-Allow-Origin, *
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods: "*"
+            allowed-origin-patterns: "*"
+      routes:
+        - id: Reports-Service
+          uri: lb://Reports-Service
+          predicates:
+            - Path=/reports/**
+        - id: Discount-Service
+          uri: lb://Discount-Service
+          predicates:
+            - Path=/Discounts/**
+        - id: Furniture-Cloud
+          uri: lb://Furniture-Cloud
+          predicates:
+            - Path=/auth/**, /product-images/**, /user/**, /admin/**, /orders/** 
+#            - Path=/user/**
+#            - Path=/admin/**         
+#            - Path=/orders/**
+#            - Path=/product-images/**
+
+
+eureka:
+ client:
+  register-with-eureka: true
+  fetch-registry: true
+  service-url:
+   defaultzone : http://localhost:8761/eureka/
+logging:
+  level:
+    root: DEBUG
