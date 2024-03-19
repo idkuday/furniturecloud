@@ -27,3 +27,28 @@ This project is an ecommerce platform tailored for furniture enthusiasts, offeri
 **Security:** Spring Security and JWTs are implemented to maintain a stateless application environment, ensuring secure user authentication and authorization.
 
 **Frontend Technology:** Angular 17, complemented by Angular Material, provides a modern frontend interface for an enhanced user experience.
+
+## How to use
+### Run the Backend Services
+The backend was created with JDK 17, please ensure you have installed a Java runtime.
+
+1) Please edit the application.yaml/.yml file under src/main/resource under folders : Furniture-Cloud, DiscountService and ReportsService to change the database configuration, the'/furniturecloud' is if you are importing the database I have provided else place your database name there:
+  url: <your database url >/furniturecloud
+  username: <Your database username>
+  password: <Your database password>
+
+2) Create the jar file for the service using the 'mvn -DskipTests=true package' command for each of the services.
+3) Run the jar files in the order, Service Registry, Store, DiscountService, ReportsService, cloud,-gateway(Api gateway).
+
+### Run the Frontend
+1) Run npm install to install node modules.
+2) Install Latest Angular CLI if it isnt already intsalled
+3) Run 'ng serve --open' to start the server and open a browser tab with the required link.
+
+### To use the app
+You required to be signed in to try out all the app functionalities.
+Also if you have restarted the backend Store server, please ensure to logout if already logged in (since the public and private keys change in this case, and all previous jwts are now invalid).
+The Admin is : admin123@fc.com, password : 1234 
+You can access the admin page only if logged in as the admin.
+Have fun!
+
